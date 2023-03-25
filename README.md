@@ -1,36 +1,69 @@
 # kimseonghwan
 
 #include <iostream>
-#include <string>
-
 using namespace std;
 
-int main() {
-    string str1 = "Hello";
-    string str2 = "World";
-    string str3;
-
-    // 문자열 덧셈
-    str3 = str1 + str2;
-    cout << "str1 + str2 : " << str3 << endl;
-
-    // 문자열 복사
-    str3 = str1;
-    cout << "str3 : " << str3 << endl;
-
-    // 문자열 길이
-    int len = str3.length();
-    cout << "str3 length : " << len << endl;
-
-    // 문자열 검색
-    int idx = str3.find("lo");
-    if (idx != string::npos) {
-        cout << "lo found at index : " << idx << endl;
+class ThreeMatrices {
+    int a[3][5] = {{5, 10, 2, 7, 5 }, {4, 6, 2, 2, 9 }, {1, 9, 2, 8, 4 }};
+    int b[3][5] = {{5, 2, 7, 4, 5}, {10, 6, 9, 2, 3}, {2, 6, 4, 7, 1}};
+    int c[3][5];
+public:
+    ThreeMatrices();
+    ~ThreeMatrices() = default;
+    void printC();
+    void biggerC();
+    void smallerC();
+};
+ThreeMatrices::ThreeMatrices() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            c[i][j] = 0;
+        }
     }
+}
+void ThreeMatrices::printC() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << c[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+void ThreeMatrices::biggerC() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (a[i][j] > b[i][j]) {
+                c[i][j] = a[i][j];
+            }
+            else {
+                c[i][j] = b[i][j];
+            }
+        }
+    }
+}
+void ThreeMatrices::smallerC() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (a[i][j] < b[i][j]) {
+                c[i][j] = a[i][j];
+            }
+            else {
+                c[i][j] = b[i][j];
+            }
+        }
+    }
+}
+int main() {
+    ThreeMatrices m;
+    cout << "initial..." << endl;
+    m.printC();
+    cout << "bigger..." << endl;
+    m.biggerC();
+    m.printC();
+    cout << "smaller..." << endl;
+    m.smallerC();
+    m.printC();
 
-    // 문자열 대체
-    str3.replace(2, 2, "ai");
-    cout << "str3 after replace : " << str3 << endl;
 
     return 0;
 }
