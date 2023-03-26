@@ -3,38 +3,66 @@
 #include <iostream>
 using namespace std;
 
-class Rectangle {
+class ThreeMatrices {
+    int a[3][5] = { {5, 10, 2, 7, 5 }, {4, 6, 2, 2, 9 }, {1, 9, 2, 8, 4 } };
+    int b[3][5] = { {5, 2, 7, 4, 5}, {10, 6, 9, 2, 3}, {2, 6, 4, 7, 1} };
+    int c[3][5];
 public:
-	int width, height;
-	Rectangle();
-	Rectangle(int w, int h);
-	Rectangle(int length);
-	bool isSquare();
+    ThreeMatrices();
+    void printC();
+    void biggerC();
+    void smallerC();
 };
-
-Rectangle::Rectangle() {
-	width = height = 5;
+ThreeMatrices::ThreeMatrices() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            c[i][j] = 0;
+        }
+    }
 }
-
-Rectangle::Rectangle(int w, int h) {
-	width = w, height = h;
+void ThreeMatrices::printC() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << c[i][j] << " ";
+        }
+        cout << endl;
+    }
 }
-
-Rectangle::Rectangle(int length) {
-	width = height = length;
+void ThreeMatrices::biggerC() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (a[i][j] > b[i][j]) {
+                c[i][j] = a[i][j];
+            }
+            else {
+                c[i][j] = b[i][j];
+            }
+        }
+    }
 }
-
-bool Rectangle::isSquare() {
-	if (width == height) return true;
-	else return false;
+void ThreeMatrices::smallerC() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (a[i][j] < b[i][j]) {
+                c[i][j] = a[i][j];
+            }
+            else {
+                c[i][j] = b[i][j];
+            }
+        }
+    }
 }
-
 int main() {
-	Rectangle rect1;
-	Rectangle rect2(3, 5);
-	Rectangle rect3(3);
+    ThreeMatrices m;
+    cout << "initial..." << endl;
+    m.printC();
+    cout << "bigger..." << endl;
+    m.biggerC();
+    m.printC();
+    cout << "smaller..." << endl;
+    m.smallerC();
+    m.printC();
 
-	if (rect1. isSquare()) cout << "rect1은 정사각형이다." << endl;
-	if (rect2. isSquare()) cout << "rect2는 정사각형이다." << endl;
-	if (rect3. isSquare()) cout << "rect3은 정사각형이다." << endl;
+
+    return 0;
 }
