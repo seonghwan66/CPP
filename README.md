@@ -1,36 +1,40 @@
 # kimseonghwan
 
 #include <iostream>
-#include <string>
-
 using namespace std;
 
+class Rectangle {
+public:
+	int width, height;
+	Rectangle();
+	Rectangle(int w, int h);
+	Rectangle(int length);
+	bool isSquare();
+};
+
+Rectangle::Rectangle() {
+	width = height = 5;
+}
+
+Rectangle::Rectangle(int w, int h) {
+	width = w, height = h;
+}
+
+Rectangle::Rectangle(int length) {
+	width = height = length;
+}
+
+bool Rectangle::isSquare() {
+	if (width == height) return true;
+	else return false;
+}
+
 int main() {
-    string str1 = "Hello";
-    string str2 = "World";
-    string str3;
+	Rectangle rect1;
+	Rectangle rect2(3, 5);
+	Rectangle rect3(3);
 
-    // 문자열 덧셈
-    str3 = str1 + str2;
-    cout << "str1 + str2 : " << str3 << endl;
-
-    // 문자열 복사
-    str3 = str1;
-    cout << "str3 : " << str3 << endl;
-
-    // 문자열 길이
-    int len = str3.length();
-    cout << "str3 length : " << len << endl;
-
-    // 문자열 검색
-    int idx = str3.find("lo");
-    if (idx != string::npos) {
-        cout << "lo found at index : " << idx << endl;
-    }
-
-    // 문자열 대체
-    str3.replace(2, 2, "ai");
-    cout << "str3 after replace : " << str3 << endl;
-
-    return 0;
+	if (rect1. isSquare()) cout << "rect1은 정사각형이다." << endl;
+	if (rect2. isSquare()) cout << "rect2는 정사각형이다." << endl;
+	if (rect3. isSquare()) cout << "rect3은 정사각형이다." << endl;
 }
