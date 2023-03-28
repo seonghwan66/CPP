@@ -4,10 +4,16 @@
 using namespace std;
 
 int main() {
-	int a;
-	cin >> a;
-	for (int i = 1; i < 10; i++) {
-		cout << a << " * " << i << " = " << a * i << endl;
+	int T, a, b;
+	cin >> T;
+	int c[100];
+
+	for (int i = 0; i < T; i++) {
+		cin >> a >> b;
+		c[i] = a + b;
+	}
+	for (int i = 0; i < T; i++) {
+		cout << c[i] << endl;
 	}
 	return 0;
 }
