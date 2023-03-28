@@ -4,16 +4,20 @@
 using namespace std;
 
 int main() {
-	int T, a, b;
-	cin >> T;
-	int c[100];
+	int X, N, a, b;
+	cin >> X;
+	cin >> N;
+	int sum = 0;
 
-	for (int i = 0; i < T; i++) {
+	for (int i = 1; i <= N; i++) {
 		cin >> a >> b;
-		c[i] = a + b;
+		sum += a * b;
 	}
-	for (int i = 0; i < T; i++) {
-		cout << c[i] << endl;
+	if (sum == X) {
+		cout << "Yes";
+	}
+	else {
+		cout << "No";
 	}
 	return 0;
 }
