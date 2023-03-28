@@ -4,20 +4,13 @@
 using namespace std;
 
 int main() {
-	int X, N, a, b;
-	cin >> X;
+	int N;
 	cin >> N;
-	int sum = 0;
 
-	for (int i = 1; i <= N; i++) {
-		cin >> a >> b;
-		sum += a * b;
+	for (int i = 1; i <= N/4; i++) {
+		cout << "long ";
 	}
-	if (sum == X) {
-		cout << "Yes";
-	}
-	else {
-		cout << "No";
-	}
+	cout << "int";
+
 	return 0;
 }
