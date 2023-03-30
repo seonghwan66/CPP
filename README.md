@@ -3,14 +3,14 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-	int N;
-	cin >> N;
+int main()
+{
+    int T;
+    cin >> T;
+    int A[T], B[T];
 
-	for (int i = 1; i <= N/4; i++) {
-		cout << "long ";
-	}
-	cout << "int";
-
-	return 0;
+    for (int i = 0; i < T; i++)
+        cin >> A[i] >> B[i];
+    for (int i = 0; i < T; i++)
+        cout << A[i] + B[i] << "\n";
 }
