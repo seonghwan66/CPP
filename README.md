@@ -1,37 +1,21 @@
 # kimseonghwan
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-class ConvertSecond {
-private:
-	int hour, min, sec;
-public:
-	ConvertSecond();
-	void setData();
-	int getResult();
+struct Line {
+	int sx, sy;
+	int ex, ey;
 };
-ConvertSecond::ConvertSecond() {
-	hour = 0;
-	min = 0;
-	sec = 0;
-}
-void ConvertSecond::setData() {
-	cout << "시(hour) 입력 : ";
-	cin >> hour;
-	cout << "분(minute) 입력 : ";
-	cin >> min;
-	cout << "초(second) 입력 : ";
-	cin >> sec;
-}
-int ConvertSecond::getResult() {
-	return (hour * 60 * 60) + (min * 60) + sec;
-}
 int main() {
-	ConvertSecond a;
-	a.setData();
-	cout << "입력하신 시간은 총 " << a.getResult() << "초입니다." << endl;
+	Line myline;
 
-	ConvertSecond b;
-	cout << "기본 시간은 총 " << b.getResult() << "초입니다." << endl;
+	cout << "시작점 좌표 정수 두 개를 입력하세요.\n";
+	cin >> myline.sx >> myline.sy;
+	cout << "끝점 좌표 정수 두 개를 입력하세요.\n";
+	cin >> myline.ex >> myline.ey;
+
+	double d = sqrt(pow(myline.ex - myline.sx, 2) + pow(myline.ey - myline.sy, 2));
+	cout << "myline의 길이는 " << d << "입니다.\n";
 }
