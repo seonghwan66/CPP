@@ -1,27 +1,20 @@
 # kimseonghwan
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-class Line {
-public:
-	int sx, sy;
-	int ex, ey;
-	void setTwoPoints();
-	double getLineLength();
-};
-void Line::setTwoPoints() {
-	cout << "시작점 좌표 정수 두 개를 입력하세요.";
-	cin >> sx >> sy;
-	cout << "끝점 좌표 정수 두 개를 입력하세요.";
-	cin >> ex >> ey;
-}
-double Line::getLineLength() {
-	return sqrt(pow(ex - sx, 2) + pow(ey - sy, 2));
-}
 int main() {
-	Line myline;
-	myline.setTwoPoints();
-	cout << "myline의 길이는 " << myline.getLineLength() << " 입니다.";
+	int answer = 0;
+	char pan[8][9];
+
+	for (int i = 0; i < 8; i++)
+		cin >> pan[i];
+
+	for (int i = 0; i < 8; i++) {
+		for (int j = i % 2; j < 8; j += 2) {
+			if (pan[i][j] == 'F')
+				answer++;
+		}
+	}
+	cout << answer << endl;
 }
