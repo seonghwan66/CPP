@@ -1,14 +1,22 @@
 # kimseonghwan
 
-a = int(input())
+#include <iostream>
+using namespace std;
 
-if a>=90:
-    print("A")
-elif a>=80:
-    print("B")
-elif a>=70:
-    print("C")
-elif a>=60:
-    print("D")
-else:
-    print("F")
+void myswap(double *px, double *py) {
+	double tmp;
+	tmp = *px;
+	*px = *py;
+	*py = tmp;
+}
+int main() {
+	double a, b;
+	cout << "두 수 입력 : ";
+	cin >> a >> b;
+	cout << "a: " << a << ", b: " << b << endl;
+
+	myswap(&a, &b);
+	cout << "a: " << a << ", b: " << b << endl;
+
+	return 0;
+}
