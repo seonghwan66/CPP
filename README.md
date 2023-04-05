@@ -3,11 +3,11 @@
 #include <iostream>
 using namespace std;
 
-void myswap(double *px, double *py) {
+void myswap(double *c, double *d) {
 	double tmp;
-	tmp = *px;
-	*px = *py;
-	*py = tmp;
+	tmp = c;
+	c = d;
+	d = tmp;
 }
 int main() {
 	double a, b;
