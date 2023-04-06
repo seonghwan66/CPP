@@ -1,22 +1,21 @@
 # kimseonghwan
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-void myswap(double *c, double *d) {
-	double tmp;
-	tmp = c;
-	c = d;
-	d = tmp;
-}
+struct Line {
+	int sx, sy;
+	int ex, ey;
+};
 int main() {
-	double a, b;
-	cout << "두 수 입력 : ";
-	cin >> a >> b;
-	cout << "a: " << a << ", b: " << b << endl;
+	Line myline;
 
-	myswap(&a, &b);
-	cout << "a: " << a << ", b: " << b << endl;
+	cout << "시작점 좌표 정수 두 개를 입력하세요.\n";
+	cin >> myline.sx >> myline.sy;
+	cout << "끝점 좌표 정수 두 개를 입력하세요.\n";
+	cin >> myline.ex >> myline.ey;
 
-	return 0;
+	double d = sqrt(pow(myline.ex - myline.sx, 2) + pow(myline.ey - myline.sy, 2));
+	cout << "myline의 길이는 " << d << "입니다.\n";
 }
