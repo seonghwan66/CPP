@@ -3,14 +3,15 @@
 #include <iostream>
 using namespace std;
 
+int a[1000000];
+
 int main() {
 	int n;
 	cin >> n;
-	
-	int a[n + 1];
+		
 	int min = 1000000;
 	int max = -1000000;
-
+	
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 
@@ -21,7 +22,6 @@ int main() {
 			max = a[i];
 		}
 	}
-
 	cout << min << " " << max << endl;
 
 	return 0;
