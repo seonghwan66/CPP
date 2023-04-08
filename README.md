@@ -6,22 +6,17 @@ using namespace std;
 
 int main() {
 
-	int a[9];
+	int a;
 	
-	for (int i = 0; i < 9; i++) {
-		cin >> a[i];
-	}
-	int x = -1;
-	int y;
+	bool check[31] = { 0, };
 
-	for (int i = 0; i < 9; i++) {
-		if (a[i] > x) {
-			x = a[i];
-			y = i;
+	for (int i = 1; i <= 28; i++) {
+		cin >> a;
+		check[a] = i;
+	}
+	for (int j = 1; j <= 30; j++) {
+		if (check[j] == 0) {
+			cout << j << "\n";
 		}
 	}
-
-	cout << x << endl << y+1 << endl;
-
-	return 0;
 }
