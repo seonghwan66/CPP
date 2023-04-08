@@ -4,18 +4,14 @@
 using namespace std;
 
 int main() {
-	int T;
-	cin >> T;
+	int N;
+	cin >> N;
 
-	int i = 1;
-	while(i <= T) {
-		int a;
-		int b;
-		cin >> a >> b;
-		
-		cout << "Case #" << i << ": " << a << " + " << b << " = " << a + b << endl;
-
-		i++;
+	for (int i = 1; i <= N; i++) {
+		for (int j = 1; j <= i; j++) {
+			cout << "*";
+		}
+		cout << endl;
 	}
 	
 	return 0;
