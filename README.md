@@ -25,7 +25,7 @@ void ThreeMatrices::buildC(char op) {
 }
 void ThreeMatrices::printC() {
 	for (int i = 0; i < 3; i++) {
-		for 
+		for //여기 해야함
 	}
 }
 
