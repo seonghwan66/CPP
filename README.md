@@ -4,17 +4,14 @@
 using namespace std;
 
 int main() {
-	int N;
-	cin >> N;
 
-	for (int i = 1; i <= N; i++) {
-		for (int k = 0; k < N - i; k++) {
-			cout << " ";
+	int c[3][5] = { {1, 3, 5, 77, 9}, {10, 20, 3, 4, -1}, {0, 0, 8, 5, 3} };
+	
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++) {
+			cout << c[i][j] << " ";
 		}
-		for (int j = 1; j <= i; j++) {
-			cout << "*";
-		}
-	cout << endl;
+		cout << endl;
 	}
 	return 0;
 }
