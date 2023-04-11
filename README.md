@@ -1,20 +1,20 @@
 # kimseonghwan
 
-def draw_stars(n):
-  if n==1:
-    return ['*']
+from sys import stdin
 
-  Stars=draw_stars(n//3)
-  L=[]
-
-  for star in Stars:
-    L.append(star*3)
-  for star in Stars:
-    L.append(star+' '*(n//3)+star)
-  for star in Stars:
-    L.append(star*3)
-
-  return L
-
-N=int(input())
-print('\n'.join(draw_stars(N)))
+stk1 = list(stdin.readline().strip())
+stk2 = []
+n = int(input())
+for line in stdin:
+    if line[0] == 'L':
+        if stk1: stk2.append(stk1.pop())
+        else: continue
+    elif line[0] == 'D':
+        if stk2: stk1.append(stk2.pop())
+        else: continue
+    elif line[0] == 'B':
+        if stk1: stk1.pop()
+        else: continue
+    elif line[0] == 'P':
+        stk1.append(line[2])
+print(''.join(stk1 + list(reversed(stk2))))
