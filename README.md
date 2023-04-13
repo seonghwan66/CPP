@@ -1,20 +1,14 @@
 # kimseonghwan
 
-def draw_stars(n):
-  if n==1:
-    return ['*']
-
-  Stars=draw_stars(n//3)
-  L=[]
-
-  for star in Stars:
-    L.append(star*3)
-  for star in Stars:
-    L.append(star+' '*(n//3)+star)
-  for star in Stars:
-    L.append(star*3)
-
-  return L
-
-N=int(input())
-print('\n'.join(draw_stars(N)))
+def hanoi_tower(n, start, end) :
+    if n == 1 :
+        print(start, end)
+        return
+       
+    hanoi_tower(n-1, start, 6-start-end) # 1단계
+    print(start, end) # 2단계
+    hanoi_tower(n-1, 6-start-end, end) # 3단계
+    
+n = int(input())
+print(2**n-1)
+hanoi_tower(n, 1, 3)
