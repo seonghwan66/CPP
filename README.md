@@ -8,23 +8,26 @@ class Circle {
 public:
 	Circle() { radius = 1; }
 	Circle(int r) { radius = r; }
+	void setRadius(int r) { radius = r; }
 	double getArea();
 };
 double Circle::getArea() {
 	return 3.14 * radius * radius;
 }
 int main() {
-	Circle donut;
-	Circle pizza(30);
+	Circle circleArray[3];
 
-	cout << donut.getArea() << endl;
+	circleArray[0].setRadius(10);
+	circleArray[1].setRadius(20);
+	circleArray[2].setRadius(30);
+
+	for (int i = 0; i < 3; i++)
+		cout << "Circle" << i << "의 면적은 " << circleArray[i].getArea() << endl;
 
 	Circle* p;
-	p = &donut;
-	cout << p->getArea() << endl;
-	cout << (*p).getArea() << endl;
-
-	p = &pizza;
-	cout << p->getArea() << endl;
-	cout << (*p).getArea() << endl;
+	p = circleArray;
+	for (int i = 0; i < 3; i++) {
+		cout << "Circle" << i << "의 면적은 " << p->getArea() << endl;
+		p++;
+	}
 }
