@@ -1,25 +1,20 @@
 # kimseonghwan
 
-import sys
-input = sys.stdin.readline
+def draw_stars(n):
+  if n==1:
+    return ['*']
 
-left = list(input().strip())
-right = []
-a = int(input())
+  Stars=draw_stars(n//3)
+  L=[]
 
-for _ in range(a):
-    b = input().split()
+  for star in Stars:
+    L.append(star*3)
+  for star in Stars:
+    L.append(star+' '*(n//3)+star)
+  for star in Stars:
+    L.append(star*3)
 
-    if b[0] == "L":
-        if left:
-            right.append(left.pop())
-    elif b[0] == "D":
-        if right:
-            left.append(right.pop())
-    elif b[0] == "B":
-        if left:
-            left.pop()
-    elif b[0] == "P":
-        left.append(b[1])
+  return L
 
-print("".join(left + right[::-1]))
+N=int(input())
+print('\n'.join(draw_stars(N)))
