@@ -1,14 +1,30 @@
 # kimseonghwan
 
-def hanoi_tower(n, start, end) :
-    if n == 1 :
-        print(start, end)
-        return
-       
-    hanoi_tower(n-1, start, 6-start-end) # 1단계
-    print(start, end) # 2단계
-    hanoi_tower(n-1, 6-start-end, end) # 3단계
-    
-n = int(input())
-print(2**n-1)
-hanoi_tower(n, 1, 3)
+#include <iostream>
+using namespace std;
+
+class Circle {
+	int radius;
+public:
+	Circle() { radius = 1; }
+	Circle(int r) { radius = r; }
+	double getArea();
+};
+double Circle::getArea() {
+	return 3.14 * radius * radius;
+}
+int main() {
+	Circle donut;
+	Circle pizza(30);
+
+	cout << donut.getArea() << endl;
+
+	Circle* p;
+	p = &donut;
+	cout << p->getArea() << endl;
+	cout << (*p).getArea() << endl;
+
+	p = &pizza;
+	cout << p->getArea() << endl;
+	cout << (*p).getArea() << endl;
+}
