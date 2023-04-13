@@ -1,20 +1,13 @@
 # kimseonghwan
 
-from sys import stdin
+chess = []
+for _ in range(8):
+    chess.append(list(map(str, list(input()))))
 
-stk1 = list(stdin.readline().strip())
-stk2 = []
-n = int(input())
-for line in stdin:
-    if line[0] == 'L':
-        if stk1: stk2.append(stk1.pop())
-        else: continue
-    elif line[0] == 'D':
-        if stk2: stk1.append(stk2.pop())
-        else: continue
-    elif line[0] == 'B':
-        if stk1: stk1.pop()
-        else: continue
-    elif line[0] == 'P':
-        stk1.append(line[2])
-print(''.join(stk1 + list(reversed(stk2))))
+answer = 0
+for i in range(8):
+    for j in range(8):
+        if (i + j) % 2 == 0:
+            if chess[i][j] == 'F':
+                answer += 1
+print(answer)
