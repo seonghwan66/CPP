@@ -1,26 +1,40 @@
 # kimseonghwan
 
 #include <iostream>
-#include <string>
 using namespace std;
 
+class ThreeMatrices {
+    int a[2][5] = { {5, 10, 2, 7, 5}, {4, 6, 2, 2, 9} };
+    int b[2][5] = { {5, 2, 7, 4, 5}, {10, 6, 9, 2, 3} };
+    int c[2][5];
+public:
+    void buildC(char op);
+    void printC();
+};
+void ThreeMatrices::buildC(char op) {
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (op == '+')
+                c[i][j] = a[i][j] + b[i][j];
+            else if (op == '-')
+                c[i][j] = a[i][j] - b[i][j];
+        }
+    }
+}
+void ThreeMatrices::printC() {
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << c[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
 int main() {
-	string s = "Apple apple Boy boy Car car 끝";
-
-	cout << "원래 문자열" << endl;
-	cout << s << endl;
-
-	cout << s.find('e') << endl;
-	cout << s.find('e', 10) << endl;
-
-	cout << s.substr(3, 5) << endl;
-	cout << s.substr(10) << endl;
-	cout << s.substr(10, 5) << endl;
-
-	int f = s.find("apple");
-	cout << f << endl;
-	s.replace(f, 2, "맛있는 사과");
-
-	cout << "바뀐 문자열 --> ";
-	cout << s << endl;
+    ThreeMatrices m;
+    cout << "Add..." << endl;
+    m.buildC('+');
+    m.printC();
+    cout << "Subtract..." << endl;
+    m.buildC('-');
+    m.printC();
 }
