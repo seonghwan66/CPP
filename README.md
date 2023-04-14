@@ -3,31 +3,36 @@
 #include <iostream>
 using namespace std;
 
-class Circle {
-	int radius;
+class Maxmin {
+    double a, b, c;
 public:
-	Circle() { radius = 1; }
-	Circle(int r) { radius = r; }
-	void setRadius(int r) { radius = r; }
-	double getArea();
+    Maxmin(double a, double b, double c) {
+        this->a = a;
+        this->b = b;
+        this->c = c;
+    }
+    double getMax();
+    double getMin();
 };
-double Circle::getArea() {
-	return 3.14 * radius * radius;
-}
+double Maxmin::getMax() {
+    double max = (a > b) ? a : b;
+    max = (max > c) ? max : c;
+    return max;
+};
+double Maxmin::getMin() {
+    double min = (a < b) ? a : b;
+    min = (min < c) ? min : c;
+    return min;
+};
 int main() {
-	Circle circleArray[3];
-
-	circleArray[0].setRadius(10);
-	circleArray[1].setRadius(20);
-	circleArray[2].setRadius(30);
-
-	for (int i = 0; i < 3; i++)
-		cout << "Circle" << i << "의 면적은 " << circleArray[i].getArea() << endl;
-
-	Circle* p;
-	p = circleArray;
-	for (int i = 0; i < 3; i++) {
-		cout << "Circle" << i << "의 면적은 " << p->getArea() << endl;
-		p++;
-	}
+    double a, b, c;
+    while (true) {
+        cout << "실수 세 개 입력: ";
+        cin >> a >> b >> c;
+        if (a + b + c == 0) break;
+        Maxmin* p = new Maxmin(a, b, c);
+        cout << "최대값은 " << p->getMax() << ", 최소값은 " << p->getMin() << endl;
+        delete p;
+    }
+    cout << "bye!" << endl;
 }
