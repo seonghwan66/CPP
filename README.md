@@ -1,19 +1,22 @@
 # kimseonghwan
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-void swap(int& x, int& y) {
-    int temp = x;
-    x = y;
-    y = temp;
-}
-
+class Student {
+public:
+	int number;
+	string name;
+	double grade;
+};
 int main() {
-    int a, b;
-    cout << "두 수 입력 : ";
-    cin >> a >> b;
-    cout << "(Before) a = " << a << " b = " << b << endl;
-    swap(a, b);
-    cout << "(After) a = " << a << " b = " << b << endl;
+	Student s = { 1853330, "고흐", 3.7 };
+	Student* p = &s;
+	cout << s.number << s.name << s.grade << endl;
+	cout << p->number << p->name << p->grade << endl;
+	cout << s.number << s.name << s.grade << endl;
+	cout << p->number << p->name << p->grade << endl;
+	cout << (*p).number << (*p).name << (*p).grade << endl;
+	cout << (*p).number << (*p).name << (*p).grade << endl;
 }
