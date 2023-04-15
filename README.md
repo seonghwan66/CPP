@@ -26,11 +26,12 @@ void ThreeMatrices::buildC(char op) {
 	}
 }
 void ThreeMatrices::printC() {
-	for (int i = 0; i < 2; i++) {
-		for (int j = 0; j < 5; j++) {
-			cout << c[i][j] << " ";
-		}
-		cout << endl;
+	int* p = c[0];
+	for (int i = 1; i <= 10; i++) {
+			cout << *p++ << " ";
+			if (i%5 == 0) {
+				cout << endl;
+			}
 	}
 }
 int main() {
