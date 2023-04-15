@@ -26,10 +26,9 @@ void ThreeMatrices::buildC(char op) {
 	}
 }
 void ThreeMatrices::printC() {
-	int* p = c[0];
-	for (int i = 1; i <= 10; i++) {
-			cout << *p++ << " ";
-			if (i%5 == 0) {
+	for (int i = 0; i < 10; i++) {
+			cout << c[i/5][i%5] << " ";
+			if (i%5 == 4) {
 				cout << endl;
 			}
 	}
