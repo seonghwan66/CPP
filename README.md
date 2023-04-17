@@ -3,39 +3,20 @@
 #include <iostream>
 using namespace std;
 
-class ThreeMatrices {
-	int a[3][5] = { {5, 10, 2, 7, 5}, {4, 6, 2, 2, 9}, {1, 9, 2, 8, 4} };
-	int b[3][5] = { {5, 2, 7, 4, 5}, {10, 6, 9, 2, 3}, {2, 6, 4, 7, 1} };
-	int c[3][5];
-public:
-	ThreeMatrices() {
-		fill_n(c[0], 15, 0);
-	};
-	void buildC(char op) {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 5; j++) {
-				if (op == '+')
-					c[i][j] = a[i][j] + b[i][j];
-				else
-					c[i][j] = a[i][j] - b[i][j];
-			}
-		}
-	}
-	void printC() {
-		for (int i = 0; i < 15; i++) {
-			cout << c[i / 5][i % 5] << " ";
-			if (i % 5 == 4)
-				cout << endl;
-		}
-	}
+void swap(int *x, int *y) {
 
-};
+	int tmp;
+	tmp = *x;
+	*x = *y;
+	*y = tmp;
+
+}
+
 int main() {
-	ThreeMatrices m;
-	cout << "Add..." << endl;
-	m.buildC('+');
-	m.printC();
-	cout << "Subtract..." << endl;
-	m.buildC('-');
-	m.printC();
+	int a, b;
+	cout << "두 수 입력 : ";
+	cin >> a >> b;
+	cout << "(Before) a = " << a << " b = " << b << endl;
+	swap(&a, &b);
+	cout << "(After) a = " << a << " b = " << b << endl;
 }
