@@ -3,42 +3,19 @@
 #include <iostream>
 using namespace std;
 
-class ThreeMatrices {
-	int a[2][5] = { {5, 10, 2, 7, 5}, {4, 6, 2, 2, 9} };
-	int b[2][5] = { {5, 2, 7, 4, 5}, {10, 6, 9, 2, 3} };
-	int c[2][5];
+class Student {
 public:
-	ThreeMatrices();
-	void buildC(char op);
-	void printC();
+	int number;
+	string name;
+	double grade;
 };
-ThreeMatrices::ThreeMatrices() {
-	fill_n(c[0], 10, 0);
-}
-void ThreeMatrices::buildC(char op) {
-	for (int i = 0; i < 2; i++) {
-		for (int j = 0; j < 5; j++) {
-			if (op == '+')
-				c[i][j] = a[i][j] + b[i][j];
-			else
-				c[i][j] = a[i][j] - b[i][j];
-		}
-	}
-}
-void ThreeMatrices::printC() {
-	for (int i = 0; i < 2; i++) {
-		for (int j = 0; j < 5; j++) {
-			cout << c[i][j] << " ";
-		}
-	cout << endl;
-	}
-}
 int main() {
-	ThreeMatrices m;
-	cout << "Add..." << endl;
-	m.buildC('+');
-	m.printC();
-	cout << "Subtract..." << endl;
-	m.buildC('-');
-	m.printC();
+	Student s = { 1853330, "고흐", 3.7 };
+	Student* p = &s;
+	cout << s.number << s.name << s.grade << endl;
+	cout << s.number << s.name << s.grade << endl;
+	cout << p->number << p->name << p->grade << endl;
+	cout << p->number << p->name << p->grade << endl;
+	cout << (*p).number << (*p).name << (*p).grade << endl;
+	cout << (*p).number << (*p).name << (*p).grade << endl;
 }
