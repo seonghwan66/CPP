@@ -3,20 +3,42 @@
 #include <iostream>
 using namespace std;
 
-void swap(int *x, int *y) {
-
-	int tmp;
-	tmp = *x;
-	*x = *y;
-	*y = tmp;
-
+class ThreeMatrices {
+	int a[2][5] = { {5, 10, 2, 7, 5}, {4, 6, 2, 2, 9} };
+	int b[2][5] = { {5, 2, 7, 4, 5}, {10, 6, 9, 2, 3} };
+	int c[2][5];
+public:
+	ThreeMatrices();
+	void buildC(char op);
+	void printC();
+};
+ThreeMatrices::ThreeMatrices() {
+	fill_n(c[0], 10, 0);
 }
-
+void ThreeMatrices::buildC(char op) {
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (op == '+')
+				c[i][j] = a[i][j] + b[i][j];
+			else
+				c[i][j] = a[i][j] - b[i][j];
+		}
+	}
+}
+void ThreeMatrices::printC() {
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 5; j++) {
+			cout << c[i][j] << " ";
+		}
+	cout << endl;
+	}
+}
 int main() {
-	int a, b;
-	cout << "두 수 입력 : ";
-	cin >> a >> b;
-	cout << "(Before) a = " << a << " b = " << b << endl;
-	swap(&a, &b);
-	cout << "(After) a = " << a << " b = " << b << endl;
+	ThreeMatrices m;
+	cout << "Add..." << endl;
+	m.buildC('+');
+	m.printC();
+	cout << "Subtract..." << endl;
+	m.buildC('-');
+	m.printC();
 }
