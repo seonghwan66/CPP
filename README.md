@@ -8,9 +8,9 @@ using namespace std;
 
 int main()
 {
-    char a[100] = "안녕하세요?";
-    char b[100] = "날씨가 참 좋군요.";
-    char c[100] = "안녕히 계세요!";
+    char a[100] = "안녕하세요?!";
+    char b[100] = "날씨가 참 좋군요ㅎㅎㅎ";
+    char c[100] = "안녕히 계세요!!!";
     
     cout << "함수 사용" << endl;
     cout << strlen(a) << " " << strlen(b) << " " << strlen(c) << endl;
