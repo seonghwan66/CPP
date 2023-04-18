@@ -1,46 +1,25 @@
 # kimseonghwan
 
-// 04.21 다시보기
-
 #include <iostream>
-#include <cstring>
+#include <cmath>
 using namespace std;
 
-int main()
-{
-    char a[100] = "안녕하세요?!";
-    char b[100] = "날씨가 참 좋군요ㅎㅎㅎ";
-    char c[100] = "안녕히 계세요!!!";
-    
-    cout << "함수 사용" << endl;
-    cout << strlen(a) << " " << strlen(b) << " " << strlen(c) << endl;
-    
-
-    int i, j, l=0;
-    while(true){
-        if(a[i]==NULL)
-        {
-            break;
-        }
-        else
-            i++;
-    }
-    while(true){
-        if(b[j]==NULL)
-        {
-            break;
-        }
-        else
-            j++;
-    }
-    while(true){
-        if(c[l]==NULL)
-        {
-            break;
-        }
-        else
-            l++;
-    }
-    cout << "반복문으로 계산" << endl;
-    cout << i << " " << j << " " << l;
+class Line {
+public:
+	int sx, sy;
+	int ex, ey;
+	void setTwoPoints() {
+		cout << "시작점 좌표 정수 두 개를 입력하세요.\n";
+		cin >> sx >> sy;
+		cout << "끝점 좌표 정수 두 개를 입력하세요.\n";
+		cin >> ex >> ey;
+	}
+	double getLineLenghth() {
+		return sqrt(pow(ex - sx, 2) + pow(ey - sy, 2));
+	}
+};
+int main() {
+	Line myline;
+	myline.setTwoPoints();
+	cout << "myline의 길이는 " << myline.getLineLength() << "입니다.\n";
 }
