@@ -1,21 +1,9 @@
 # kimseonghwan
 
-#include <iostream>
-#include <cmath>
-using namespace std;
-
-struct Line {
-	int sx, sy;
-	int ex, ey;
-};
-int main() {
-	Line myline;
-
-	cout << "시작점 좌표 정수 두 개를 입력하세요.";
-	cin >> myline.sx >> myline.sy;
-	cout << "끝점 좌표 정수 두 개를 입력하세요." << endl;
-	cin >> myline.ex >> myline.ey;
-
-	double d = sqrt(pow(myline.ex - myline.sx, 2) + pow(myline.ey - myline.sy, 2));
-	cout << "myline의 길이는 " << d << endl;
-}
+def ancestor(x, y):
+    if x == y: # x와 y가 같은 경우
+        return True
+    elif x == None: # x가 None인 경우
+        return False
+    else: # x와 y가 다른 경우
+        return ancestor(parent(x), y)
