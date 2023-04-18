@@ -1,9 +1,44 @@
 # kimseonghwan
 
-def ancestor(x, y):
-    if x == y: # x와 y가 같은 경우
-        return True
-    elif x == None: # x가 None인 경우
-        return False
-    else: # x와 y가 다른 경우
-        return ancestor(parent(x), y)
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    char a[100] = "안녕하세요?";
+    char b[100] = "날씨가 참 좋군요.";
+    char c[100] = "안녕히 계세요!";
+    
+    cout << "함수 사용" << endl;
+    cout << strlen(a) << " " << strlen(b) << " " << strlen(c) << endl;
+    
+
+    int i, j, l=0;
+    while(true){
+        if(a[i]==NULL)
+        {
+            break;
+        }
+        else
+            i++;
+    }
+    while(true){
+        if(b[j]==NULL)
+        {
+            break;
+        }
+        else
+            j++;
+    }
+    while(true){
+        if(c[l]==NULL)
+        {
+            break;
+        }
+        else
+            l++;
+    }
+    cout << "반복문으로 계산" << endl;
+    cout << i << " " << j << " " << l;
+}
