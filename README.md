@@ -1,21 +1,21 @@
 # kimseonghwan
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-class Student {
-public:
-	int number;
-	string name;
-	double grade;
+struct Line {
+	int sx, sy;
+	int ex, ey;
 };
 int main() {
-	Student s = { 1853330, "고흐", 3.7 };
-	Student* p = &s;
-	cout << s.number << s.name << s.grade << endl;
-	cout << s.number << s.name << s.grade << endl;
-	cout << p->number << p->name << p->grade << endl;
-	cout << p->number << p->name << p->grade << endl;
-	cout << (*p).number << (*p).name << (*p).grade << endl;
-	cout << (*p).number << (*p).name << (*p).grade << endl;
+	Line myline;
+
+	cout << "시작점 좌표 정수 두 개를 입력하세요.";
+	cin >> myline.sx >> myline.sy;
+	cout << "끝점 좌표 정수 두 개를 입력하세요." << endl;
+	cin >> myline.ex >> myline.ey;
+
+	double d = sqrt(pow(myline.ex - myline.sx, 2) + pow(myline.ey - myline.sy, 2));
+	cout << "myline의 길이는 " << d << endl;
 }
