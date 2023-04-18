@@ -14,12 +14,12 @@ public:
 		cout << "끝점 좌표 정수 두 개를 입력하세요.\n";
 		cin >> ex >> ey;
 	}
-	double getLineLenghth() {
+	double getLineLength() {
 		return sqrt(pow(ex - sx, 2) + pow(ey - sy, 2));
 	}
 };
 int main() {
 	Line myline;
 	myline.setTwoPoints();
-	cout << "myline의 길이는 " << myline.getLineLength() << "입니다.\n";
+	cout << "myline의 길이는 " << myline.getLineLength() << " 입니다.";
 }
