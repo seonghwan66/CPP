@@ -3,30 +3,40 @@
 #include <iostream>
 using namespace std;
 
+class ThreeMatrices {
+	int a[3][5] = { {5, 10, 2, 7, 5}, {4, 6, 2, 2, 9}, {1, 9, 2, 8, 4} };
+	int b[3][5] = { {5, 2, 7, 4, 5}, {10, 6, 9, 2, 3}, {2, 6, 4, 7, 1} };
+	int c[3][5];
+public:
+	ThreeMatrices() {
+		fill_n(c[0], 15, 0);
+	}
+	void buildC(char op) {
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 5; j++) {
+				if (op == '+')
+					c[i][j] = a[i][j] + b[i][j];
+				else
+					c[i][j] = a[i][j] - b[i][j];
+			}
+		}
+	}
+	void printC() {
+		for (int i = 0; i < 15; i++) {
+			cout << c[i / 5][i % 5] << " ";
+			if (i % 5 == 4) {
+				cout << endl;
+			}
+		}
+	}
+
+};
 int main() {
-
-	int n;
-	cout << "입력할 정수의 개수 : " << endl;
-	cin >> n;
-
-	if (n <= 0) {
-	cout << "양수를 입력하세요.";
-	return 0;
-	}
-	int *p = new int[n];
-
-	if (p == NULL) {
-		cout << "메모리를 할당할 수 없습니다.";
-		return 0;
-	}
-	cout << n << "개의 정수를 입력하세요.\n";
-	for (int i = 0; i < n; i++)
-		cin >> p[i];
-
-	cout << "거꾸로 하면 다음과 같습니다.\n";
-	for (int i = n-1; i >= 0; --i)
-		cout << p[i] << ' ';
-
-	cout << endl;
-	delete [] p;
+	ThreeMatrices m;
+	cout << "Add..." << endl;
+	m.buildC('+');
+	m.printC();
+	cout << "Subtract..." << endl;
+	m.buildC('-');
+	m.printC();
 }
