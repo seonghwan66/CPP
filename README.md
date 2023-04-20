@@ -1,27 +1,21 @@
 # kimseonghwan
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-	int n;
-	cout<< "입력할정수의개수: ";
-	cin>> n;
-	if (n <= 0) {
-		cout<< "양수를입력하세요.";
-		
-		return 0;
+	string names[5];  // string 배열
+	cout<< "이름 5개를 입력하세요.\n";
+	for (int i= 0; i< 5; i++) {
+	cout<< i<< "번: ";
+	getline(cin, names[i]);
 	}
-	int* p = new int[n];    // 메모리할당
-	if (!p) {     // if (p==NULL) 과같은의미
-		cout<< "메모리를할당할수없습니다.";
-		
-		return 0;
+	string latter = names[0];
+	for (int i= 1; i< 5; i++) {
+	if (latter < names[i]) // string 비교
+		latter = names[i]; // string 대입
 	}
-	cout<< n <<"개의정수를입력하세요. \n";
-	for (int i= 0; i< n; i++)  cin>> p[i]; 
-	cout<< "거꾸로하면다음과같습니다. \n";
-	for (int i= n -1; i>= 0; i--)  cout<< p[i] << ' ';
-	cout<< endl;
-	delete[] p; // 메모리반환
-}
+	cout<< "사전에서 가장 뒤에 나오는 이름은 " << endl;
+	cout<< latter << "입니다." << endl;
+	}
