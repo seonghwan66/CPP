@@ -1,25 +1,24 @@
 # kimseonghwan
 
-#include <iostream>
-#include <cmath>
+#include<iostream>
 using namespace std;
 
-class Line {
-	int sx, sy;
-	int ex, ey;
-public:
-	void setTwoPoints() {
-		cout << "시작점 좌표 정수 두 개를 입력하세요.\n";
-		cin >> sx >> sy;
-		cout << "끝점 좌표 정수 두 개를 입력하세요.\n";
-		cin >> ex >> ey;
-	}
-	double getLineLength() {
-		return sqrt(pow(ex - sx, 2) + pow(ey - sy, 2));
-	}
-};
 int main() {
-	Line myline;
-	myline.setTwoPoints();
-	cout << "myline의 길이는 " << myline.getLineLength() << " 입니다.";
+	int count[42] = {};
+
+	int v;
+	for (int i = 0; i < 10; i++) {
+		cin >> v;
+		count[v % 42]++;
+	}
+	int result = 0;
+
+	for (int v : count) {
+		if (v > 0) {
+			result++;
+		}
+	}
+	cout << result;
+
+	return 0;
 }
