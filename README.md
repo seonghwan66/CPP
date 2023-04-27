@@ -1,24 +1,34 @@
 # kimseonghwan
 
-#include<iostream>
+#include <iostream>
+
 using namespace std;
 
+int n, m;
+int arr[101] = { 0, };
+int a, b;
+
+void swap(int idx1, int idx2) {
+    int temp = arr[idx1];
+    arr[idx1] = arr[idx2];
+    arr[idx2] = temp;
+}
+
 int main() {
-	int count[42] = {};
+    cin >> n >> m;
 
-	int v;
-	for (int i = 0; i < 10; i++) {
-		cin >> v;
-		count[v % 42]++;
-	}
-	int result = 0;
+    for (int i = 1; i <= n; i++) {
+        arr[i] = i;
+    }
 
-	for (int v : count) {
-		if (v > 0) {
-			result++;
-		}
-	}
-	cout << result;
+    for (int i = 0; i < m; i++) {
+        cin >> a >> b;
+        swap(a, b);
+    }
 
-	return 0;
+    for (int i = 1; i <= n; i++) {
+        cout << arr[i] << ' ';
+    }
+
+    return 0;
 }
