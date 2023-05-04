@@ -1,22 +1,31 @@
 # kimseonghwan
 
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 using namespace std;
 
 int main() {
+	int temp, sum = 0;
+	ifstream fa("a.txt");
+	ofstream fb("b.txt");
 
-	int A, B, C;
-	cin >> A >> B >> C;
+	if (!fa || !fb) {
+		cerr << "파일열기실패" << endl;
+		return 1;
+	}
 
-	
-	int min = 60 * A + B;
+	for (int i = 0; i < 5; i++) {
+		fa >> temp;
+		sum += temp;
+	}
 
-	min += C;
+	fb << "합계 : " << sum << endl;
+	fb << "평균 : " << fixed << setprecision(1) << (double)sum / 5 << endl;
 
-	int hour = (min / 60) % 24;
-	min = min % 60;
+	fa.close(); fb.close();
 
-	cout << hour << " " << min;
+	cout << "처리완료. b.txt를 열어서 결과를 확인하세요." << endl;
 
 	return 0;
 }
