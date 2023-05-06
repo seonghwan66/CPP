@@ -1,6 +1,5 @@
 # kimseonghwan
-
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -13,4 +12,14 @@ int main() {
 	else if (a == b || a == c) {
 		reward = 1000 + a * 100;
 	}
+	else if (b == c) {
+		reward = 1000 + b * 100;
+	}
+	else {
+		reward = max(max(a, b), c) * 100;
+	}
+
+	cout << reward;
+
+	return 0;
 }
