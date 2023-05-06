@@ -1,31 +1,16 @@
 # kimseonghwan
 
-#include <iostream>
-#include <fstream>
-#include <iomanip>
+#include<iostream>
 using namespace std;
 
 int main() {
-	int temp, sum = 0;
-	ifstream fa("a.txt");
-	ofstream fb("b.txt");
+	int a, b, c, reward = 0;
+	cin >> a >> b >> c;
 
-	if (!fa || !fb) {
-		cerr << "파일열기실패" << endl;
-		return 1;
+	if (a == b && b == c) {
+		reward = 10000 + a * 1000;
 	}
-
-	for (int i = 0; i < 5; i++) {
-		fa >> temp;
-		sum += temp;
+	else if (a == b || a == c) {
+		reward = 1000 + a * 100;
 	}
-
-	fb << "합계 : " << sum << endl;
-	fb << "평균 : " << fixed << setprecision(1) << (double)sum / 5 << endl;
-
-	fa.close(); fb.close();
-
-	cout << "처리완료. b.txt를 열어서 결과를 확인하세요." << endl;
-
-	return 0;
 }
