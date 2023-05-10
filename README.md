@@ -1,23 +1,31 @@
 # kimseonghwan
+
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 using namespace std;
 
 int main() {
-	int n;
-	int score[1000] = {};
-	int max = 0;
-	double result = 0;
-	cin >> n;
+	int  temp, sum=0;
+	ifstream fa("a.txt");
+	ofstream fb("b.txt");
 
-	for (int i = 0; i < n; i++) {
-		cin >> score[i];
-		if (score[i] > max)
-			max = score[i];
-		result += score[i];
+	if (!fa || !fb) {
+		cerr << "파일 열기 실패" << endl;
+		return 1;
 	}
-	result = (result / max * 100) / n;
 
-	cout << fixed;
-	cout.precision(6);
-	cout << result << endl;
+	for (int i = 0; i < 5; i++) {
+		fa >> temp;
+		sum += temp;
+	}
+
+	fb << "합계 : " << sum << endl;
+	fb << "평균 : " << fixed << setprecision(1) << (double)sum / 5 << endl;
+	fa.close();
+	fb.close();
+
+	cout << "처리 완료. b.txt를 열어서 결과를 확인하세요." << endl;
+
+	return 0;
 }
