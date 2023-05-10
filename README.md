@@ -2,25 +2,28 @@
 
 #include <iostream>
 #include <fstream>
-#include <algorithm>
+#define N 10
 using namespace std;
 
 int main() {
-	double arr[31];
-	ifstream fin("sort_before.txt");
-	ofstream fout("sort_after.txt");
+	int a[N];
+	ifstream fa("a.txt");
+	ofstream fb("b.txt");
 
+	if (!fa || !fb) {
+		cerr << "파일 열기 실패" << endl;
+		return 1;
+	}
+	for (int i = 0; i < N; i++) {
+		fa >> a[i];
+	}
+	for (int i = N-1; i >= 0; i--) 
+		fb << a[i] << endl;
+	
+	fa.close();
+	fb.close();
 
-	for (int i = 0; i < 31; i++) fin >> arr[i];
-	sort(arr, arr+31, greater<double>());	//기본은 오름차순, 3번 째에 넣으면 내림차순, arr 배열 정렬해서 업데이트, greater<double>() 일단 외우기. 나중에 배움.
-
-	for (int i = 0; i < 31; i++) fout << arr[i] << endl;
-
-
-
-
-	fin.close(); fout.close();
-	cout << "end\n";
+	cout << "처리완료. b.txt를 열어서 결과를 확인하세요." << endl;
 
 	return 0;
 }
