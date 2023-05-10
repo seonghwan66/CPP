@@ -2,33 +2,38 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 int main() {
-	char source[] = "source.txt";
-	ifstream fin(source);
-	ofstream fout("copy.txt");
+	ifstream apple1("a1.txt");
+	ifstream apple2("a2.txt");
+	ifstream apple3("a3.txt");
+	ofstream cloud("b.txt", ios::app);
 
-	if (!fin || !fout) {
-		cout << source << " 열기오류";
-		return 0;
+	if (!apple1 || !apple2 || !apple3 || !cloud) {
+		cerr << "파일 열기 실패" << endl;
+		return 1;
 	}
-	
-	int count = 0;
-	int c;
-	
-	while ((c = fin.get()) != EOF) {
-		cout << (char)c;
-		fout << (char)c;
-		count++;
+
+	string line;
+	while (getline(apple1, line)) {
+		cloud << line << endl;
 	}
-	
-	cout << endl << endl;
-	cout << "---------------------------" << endl;	
-	cout << "읽은 바이트 수는" << count << endl;
-	
-	fin.close();
-	fout.close();
+	apple1.close();
+
+	while (getline(apple2, line)) {
+		cloud << line << endl;
+	}
+	apple2.close();
+
+	while (getline(apple3, line)) {
+		cloud << line << endl;
+	}
+	apple3.close();
+
+	cloud.close();
+	cout << "파일 합치기 완료" << endl;
 
 	return 0;
 }
