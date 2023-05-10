@@ -2,38 +2,40 @@
 
 #include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <algorithm>
 #include <string>
 using namespace std;
 
 int main() {
-	ifstream apple1("a1.txt");
-	ifstream apple2("a2.txt");
-	ifstream apple3("a3.txt");
-	ofstream cloud("b.txt", ios::app);
+	ifstream fin("score.txt");
+	ofstream fout("result.txt");
 
-	if (!apple1 || !apple2 || !apple3 || !cloud) {
+	if (!fin || !fout) {
 		cerr << "파일 열기 실패" << endl;
 		return 1;
 	}
+	
+	string name;
+	double score, sum = 0, max_score = 0;
+	int count =0;
 
-	string line;
-	while (getline(apple1, line)) {
-		cloud << line << endl;
+	while (fin >> name >> score) {
+		sum += score;
+		max_score = max(max_score, score);
+		count++;
 	}
-	apple1.close();
 
-	while (getline(apple2, line)) {
-		cloud << line << endl;
-	}
-	apple2.close();
+	double avg = sum / count;
 
-	while (getline(apple3, line)) {
-		cloud << line << endl;
-	}
-	apple3.close();
+	fout << fixed << setprecision(2) << "합계 : " << sum << endl;
+	fout << fixed << setprecision(2) << "평균 : " << avg << endl;
+	fout << fixed << setprecision(2) << "최고 점수 : " << max_score << endl;
 
-	cloud.close();
-	cout << "파일 합치기 완료" << endl;
+	fin.close();
+	fout.close();
+
+	cout << "처리완료. result.txt를 열어서 결과를 확인하세요." << endl;
 
 	return 0;
 }
