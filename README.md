@@ -3,29 +3,24 @@
 #include <iostream>
 using namespace std;
 
-int main(int argc, const char *argv[]) {
+template<typename T>
 
-	ios_base::sync_with_stdio(false);
-	cin.tie(0);
+T arr_plus(T arr[], int size){
 
-	int count[42] = {};
+	T sum = 0;
 
-	int v;
-
-	for (int i = 0; i < 10; i++) {
-		cin >> v;
-
-		count[v % 42]++;
+	for (int i = 0; i < size; i++) {
+		sum += arr[i];
 	}
+	return sum;
+}
 
-	int result = 0;
+int main() {
+	int iarr[] = { 1, 2, 3, 4, 5 };
+	double darr[] = { 1.1, 2.2, 3.3 };
 
-	for (int v : count) {
-		if (v > 0) {
-			result++;
-		}
-	}
-	cout << result;
+	cout << "정수 배열 합은 " << arr_plus(iarr, 5) << endl;
+	cout << "실수 배열 합은 " << arr_plus(darr, 3) << endl;
 
 	return 0;
 }
