@@ -2,28 +2,32 @@
 
 #include <iostream>
 #include <fstream>
-#define N 10
 using namespace std;
 
 int main() {
-	int a[N];
-	ifstream fa("a.txt");
-	ofstream fb("b.txt");
+	char source[] = "source.txt";
+	ifstream fin(source);
+	ofstream fout("copy.txt");
 
-	if (!fa || !fb) {
-		cerr << "파일 열기 실패" << endl;
-		return 1;
+	if (!fin || !fout) {
+		cout << source << "열기오류";
+		return 0;
 	}
-	for (int i = 0; i < N; i++) {
-		fa >> a[i];
+	int count = 0;
+	int c;
+
+	while ((c = fin.get()) != EOF) {
+		cout << (char)c;
+		fout << (char)c;
+		count++;
 	}
-	for (int i = N - 1; i >= 0; i--)
-		fb << a[i] << endl;
 
-	fa.close();
-	fb.close();
+	cout << endl << endl;
+	cout << "-------------------" << endl;
+	cout << "읽은 바이트 수는 " << count << endl;
 
-	cout << "처리완료. b.txt를 열어서 결과를 확인하세요." << endl;
+	fin.close();
+	fout.close();
 
 	return 0;
 }
