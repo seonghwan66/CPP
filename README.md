@@ -3,12 +3,18 @@
 #include <iostream>
 using namespace std;
 
-template<typename T>
+// 정수형 배열 합 구하기 함수
+int arr_plus(int arr[], int size) {
+	int sum = 0;
+	for (int i = 0; i < size; i++) {
+		sum += arr[i];
+	}
+	return sum;
+}
 
-T arr_plus(T arr[], int size){
-
-	T sum = 0;
-
+// 실수형 배열 합 구하기 함수
+double arr_plus(double arr[], int size) {
+	double sum = 0;
 	for (int i = 0; i < size; i++) {
 		sum += arr[i];
 	}
