@@ -4,26 +4,12 @@
 using namespace std;
 
 template<typename T>
-void myswap(T& x, T& y) {
-	T tmp = x;
-	x = y;
-	y = tmp;
+T sum(T a, T b, T c = 0) {
+	return a + b + c;
 }
 
 int main() {
-	int a, b, c;
-	cout << "세 정수 입력: ";
-	cin >> a >> b >> c;
-	myswap(a, b);
-	myswap(b, c);
-	cout << "a = " << a << ", b = " << b << ", c = " << c << endl << endl;
-
-	double d, e, f;
-	cout << "세 실수 입력: ";
-	cin >> d >> e >> f;
-	myswap(d, e);
-	myswap(e, f);
-	cout << "d = " << d << ", e = " << e << ", f = " << f << endl;
-
-	return 0;
+	cout << "두 수의 합은 " << sum<int>(5, 7) << endl;
+	cout << "세 수의 합은 " << sum<int>(5, 7, 8) << endl;
+	cout << "세 실수의 합은 " << sum<double>(3.14, 7.99, -1.0) << endl;
 }
