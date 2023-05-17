@@ -4,22 +4,26 @@
 using namespace std;
 
 template<typename T>
-
-
-T arr_plus(T arr[], int n) {
-	T sum = arr[0];
-	for (int i = 1; i < n; i++)
-		sum += arr[i];
-	return sum;
+void myswap(T& x, T& y) {
+	T tmp = x;
+	x = y;
+	y = tmp;
 }
 
 int main() {
-	int iarr[] = { 1, 2, 3, 4, 5 };
-	double darr[] = { 1.1, 2.2, 3.3 };
-	string sarr[] = { "딸기", "바나나", "우유" };
+	int a, b, c;
+	cout << "세 정수 입력: ";
+	cin >> a >> b >> c;
+	myswap(a, b);
+	myswap(b, c);
+	cout << "a = " << a << ", b = " << b << ", c = " << c << endl << endl;
 
-	cout << "정수 배열 합은 " << arr_plus(iarr, 5) << endl;
-	cout << "실수 배열 합은 " << arr_plus(darr, 3) << endl;
-	cout << "string 배열 경우는 " << arr_plus(sarr, 3) << endl;
+	double d, e, f;
+	cout << "세 실수 입력: ";
+	cin >> d >> e >> f;
+	myswap(d, e);
+	myswap(e, f);
+	cout << "d = " << d << ", e = " << e << ", f = " << f << endl;
 
+	return 0;
 }
