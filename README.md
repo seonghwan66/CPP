@@ -1,33 +1,25 @@
 # kimseonghwan
 
-#include <iostream>
-#include <fstream>
+#include<iostream>
 using namespace std;
 
+template<typename T>
+
+
+T arr_plus(T arr[], int n) {
+	T sum = arr[0];
+	for (int i = 1; i < n; i++)
+		sum += arr[i];
+	return sum;
+}
+
 int main() {
-	char source[] = "source.txt";
-	ifstream fin(source);
-	ofstream fout("copy.txt");
+	int iarr[] = { 1, 2, 3, 4, 5 };
+	double darr[] = { 1.1, 2.2, 3.3 };
+	string sarr[] = { "딸기", "바나나", "우유" };
 
-	if (!fin || !fout) {
-		cout << source << "열기오류";
-		return 0;
-	}
-	int count = 0;
-	int c;
+	cout << "정수 배열 합은 " << arr_plus(iarr, 5) << endl;
+	cout << "실수 배열 합은 " << arr_plus(darr, 3) << endl;
+	cout << "string 배열 경우는 " << arr_plus(sarr, 3) << endl;
 
-	while ((c = fin.get()) != EOF) {
-		cout << (char)c;
-		fout << (char)c;
-		count++;
-	}
-
-	cout << endl << endl;
-	cout << "-------------------" << endl;
-	cout << "읽은 바이트 수는 " << count << endl;
-
-	fin.close();
-	fout.close();
-
-	return 0;
 }
