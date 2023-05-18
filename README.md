@@ -1,15 +1,40 @@
 # kimseonghwan
 
 #include<iostream>
+#include<fstream>
+#include<string>
 using namespace std;
 
-template<typename T>
-T sum(T a, T b, T c = 0) {
-	return a + b + c;
-}
-
 int main() {
-	cout << "두 수의 합은 " << sum<int>(5, 7) << endl;
-	cout << "세 수의 합은 " << sum<int>(5, 7, 8) << endl;
-	cout << "세 실수의 합은 " << sum<double>(3.14, 7.99, -1.0) << endl;
+	ifstream apple1("a1.txt");
+	ifstream apple2("a2.txt");
+	ifstream apple3("a3.txt");
+	ofstream cloud("b.txt", ios::app);
+
+	if (!apple1 || !apple2 || !apple3 || !cloud) {
+		cerr << "파일 열기 실패" << endl;
+		return 1;
+	}
+
+	string line;
+	while (getline(apple1, line)) {
+		cloud << line << endl;
+	}
+	apple1.close();
+
+	while (getline(apple2, line)) {
+		cloud << line << endl;
+	}
+	apple2.close();
+
+	while (getline(apple3, line)) {
+		cloud << line << endl;
+	}
+	apple3.close();
+
+	cloud.close();
+
+	cout << "파일 합치기 완료" << endl;
+
+	return 0;
 }
