@@ -1,30 +1,46 @@
 # kimseonghwan
 
 #include <iostream>
+#include <fstream>
 #include <string>
+
 using namespace std;
 
 int main() {
-	string s;
-	
-	cout<< "여러줄 문자열을 입력하세요. 마지막에 & 입력 후 엔터키를 누르세요.\n";
-	getline(cin, s, '&');
-	cin.ignore();
-	
-	string f, r;
-	cout<< "find: ";
-	getline(cin, f);
-	cout<< "replace: ";
-	getline(cin, r);
-	int sindex= 0;
-	
-	while (true) {
-		int findex= s.find(f, sindex); // sindex부터문자열f 검색
-		
-		if (findex== -1)break;
-		s.replace(findex, f.length(), r); // findex부터문자열f의길이만큼문자열r로변경
-		
-		sindex= findex+ r.length();
-	}
-	cout<< s << endl;
+    ifstream fin("둘리.txt");
+    ofstream fout("dooli.txt");
+
+    if (!fin || !fout) {
+        cerr << "파일 열기 실패" << endl;
+        return 1;
+    }
+
+    string s;
+    getline(fin, s, '&');
+    string f, r;
+
+    cout << "고치기 전 단어: ";
+    getline(cin, f);
+
+    cout << "고치기 후 단어: ";
+    getline(cin, r);
+
+    int sindex = 0;
+
+    while (true) {
+        int findex = s.find(f, sindex);
+        if (findex == -1) break;
+
+        s.replace(findex, f.length(), r);
+        sindex = findex + r.length();
+    }
+
+    fout << s << endl;
+
+    fin.close();
+    fout.close();
+
+    cout << "처리 완료. dooli.txt를 열어서 결과를 확인하세요." << endl;
+
+    return 0;
 }
