@@ -7,16 +7,16 @@
 using namespace std;
 
 int main() {
-    ifstream fin("둘리.txt");
-    ofstream fout("dooli.txt");
+    ifstream charlie("둘리.txt");
+    ofstream puth("dooli.txt");
 
-    if (!fin || !fout) {
+    if (!charlie || !puth) {
         cerr << "파일 열기 실패" << endl;
         return 1;
     }
 
     string s;
-    getline(fin, s, '&');
+    getline(charlie, s, '&');
     string f, r;
 
     cout << "고치기 전 단어: ";
@@ -35,10 +35,10 @@ int main() {
         sindex = findex + r.length();
     }
 
-    fout << s << endl;
+    puth << s << endl;
 
-    fin.close();
-    fout.close();
+    charlie.close();
+    puth.close();
 
     cout << "처리 완료. dooli.txt를 열어서 결과를 확인하세요." << endl;
 
