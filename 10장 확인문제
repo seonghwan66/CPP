@@ -85,3 +85,40 @@ int main() {
 
 	return 0;
 }
+
+
+--------22번---------
+#include<iostream>
+using namespace std;
+template <class T>
+class MyStack {
+	T data[5];
+public:
+	int tos = -1;
+	void push(T element) {
+		if (tos == 4) {
+			cout << "stack full이므로 더 넣을 수 없습니다." << endl;
+		}
+		else {
+			tos++;
+			data[tos] = element;
+		}
+	}
+	T pop() {
+		if (tos == -1) {
+			cout << "stack empty - 프로그램을 종료합니다." << endl;
+			exit(0);
+		}
+		return data[tos--];
+	}
+};
+int main() {
+	MyStack<int> si;
+	si.push(100);
+	si.push(200);
+	si.push(300);
+	cout << "현재 정수 스택에 " << si.tos + 1 << " 개 있음" << endl;
+	cout << "맨 위에 있는 " << si.pop() << " 꺼냄" << endl;
+	cout << "맨 위에 있는 " << si.pop() << " 꺼냄" << endl;
+	cout << "현재 정수 스택에 " << si.tos + 1 << " 개 남아있음" << endl << endl;
+}
