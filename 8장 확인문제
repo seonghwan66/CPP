@@ -18,3 +18,24 @@ int main() {
 	cout << d.w; // ⑧
 }
 ------------2번-------------
+#include <iostream>
+using namespace std;
+
+class A {
+	int x;
+public: void setX(int x) { this->x = x; }
+};
+
+class B : protected A {
+	int y;
+public: void setXY(int x, int y) { setX(x); this->y = y; }
+};
+
+int main() {
+	A a; B b;
+	a.x = 3; // ①
+	b.y = 5; // ②
+	a.setX(3); // ③
+	b.setX(3); // ④
+	b.setXY(3, 5); // ⑤
+}
