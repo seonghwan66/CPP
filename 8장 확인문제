@@ -39,3 +39,43 @@ int main() {
 	b.setX(3); // ④
 	b.setXY(3, 5); // ⑤
 }
+------------4번-------------
+#include <iostream>
+using namespace std;
+
+class Adder {
+protected:
+	int add(int a, int b) {
+		return a + b;
+	}
+};
+class Subtractor {
+protected:
+	int minus(int a, int b) {
+		return a - b;
+	}
+};
+class Calculator : public Adder, public Subtractor {
+public:
+	int calc(int a, char op, int b) {
+		int res = 0;
+
+		if (op == '+') res = add(a, b);
+		else if (op == '-') res = minus(a, b);
+
+		return res;
+	}
+};
+int main() {
+	int a, b;
+	char op;
+	Calculator calcurator;
+
+	while (1) {
+		cout << "수식을 입력하세요. (정수+정수 혹은 정수-정수)" << endl;
+		cin >> a >> op >> b;
+		if (a == 99 && b == 99) break;
+		cout << calculator.calc(a, op, b) << endl;
+	}
+	cout << "계산을 종료합니다." << endl;
+}
