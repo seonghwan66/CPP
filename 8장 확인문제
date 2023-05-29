@@ -1,0 +1,20 @@
+------------1번-------------
+#include <iostream>
+using namespace std;
+
+class A { public: int x = 1; };
+				class B : public A { public: int y = 2; };
+				class C : private A { public: int z = 3; };
+				class D : protected B { public: int w = 4; };
+int main() {
+	A a; B b; C c; D d;
+	cout << a.x; // ①
+	cout << b.x; // ②
+	cout << b.y; // ③
+	cout << c.x; // ④
+	cout << c.z; // ⑤
+	cout << d.x; // ⑥
+	cout << d.y; // ⑦
+	cout << d.w; // ⑧
+}
+------------2번-------------
