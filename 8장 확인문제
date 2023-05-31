@@ -119,34 +119,25 @@ int main() {
 ------------난수-------------
 #include <iostream>
 #include <windows.h>
+#include <random>
 using namespace std;
 
-void heart(int x, int y) {
-    COORD pos = { x, y };
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+void move_cur(int x, int y) {
+    printf("\033[%d;%dH*", y, x);
 }
 int main() {
-    SYSTEMTIME time;
-    GetSystemTime(&time);
-    unsigned int seed = time.wMilliseconds;
-    srand(seed);
+    
+    random_device dv;
+    mt19937 gen(dv());
+    uniform_int_distribution<> dis(0, 65);
+    uniform_int_distribution<> dit(0, 25);
 
-    for (int i = 0; i < 20; i++) {
-        int x = rand() % 71;
-        int y = rand() % 31;
-
-        heart(x, y);
-        cout << " **  ** \n";
-        heart(x, y + 1);
-        cout << "*******\n";
-        heart(x, y + 2);
-        cout << " ***** \n";
-        heart(x, y + 3);
-        cout << "  ***  \n";
-        heart(x, y + 4);
-        cout << "   *   \n";
-
-        Sleep(500);
+    for (int i = 0; i < 200; i++) {
+        move_cur(dis(gen), dit(gen));
+        Sleep(100);
     }
+
+    getchar();
+
     return 0;
 }
