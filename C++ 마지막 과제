@@ -17,3 +17,50 @@ template <typename T> void print_2dim_array(T m[][2], int size) {
 	}
 }
 ----------------------------------------main.cpp----------------------------------------
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <map>
+#include "hw.h"
+using namespace std;
+
+int main() {
+
+	ifstream fin("동물사전.txt");
+
+	if (!fin) {
+		cerr << "사전열기실패";
+		return 0;
+	}
+
+	map<string, string> m;
+
+	string a, b;
+
+	while (true) {
+		fin >> a >> b;
+		if (fin.eof()) break;   /* 파일끝이면읽기종료*/
+		m[a] = b;/* map에a,b 쌍을insert*/
+	}
+
+	fin.close();
+	print_map(m);     /* 맵전체내용출력.함수는hw.h에있음*/
+
+	cout << "----------------------------" << endl;
+	cout << "총 동물 수 = " << m.size() << endl;
+	cout << "----------------------------" << endl;
+
+	while (true) {
+		cout << "찾고 싶은 동물 : ";
+		getline(cin, a);
+
+		if (a == "exit")
+			break;
+		if (m.count(a) == 0)/* 찾은개수가0, 즉, 없다는의미*/
+			cout << "미등록 동물입니다." << endl;
+		else cout << "--> " << m[a] << endl;
+	} // while
+
+	cout << "이용해주셔서 감사합니다!" << endl;
+
+}// main
