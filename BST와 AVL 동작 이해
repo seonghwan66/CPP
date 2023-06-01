@@ -54,8 +54,8 @@ def __deleteItem(self, tNode:TreeNode, x) -> TreeNode:
   else:
     tNode.right = self.__deleteItem(tNode.right, x)
     return tNode
-------------------------------------------------------------------------------------------------------------------
-
+    
+----------------------------------------
 
 def __deleteNode(self, tNode:TreeNode) -> TreeNode:
 
