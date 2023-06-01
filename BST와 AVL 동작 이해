@@ -142,3 +142,57 @@ bst1.insert(33)
 bst1.insert(32)
 bst1.insert(36)
 bst1.insert(28)
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+1. 이진검색트리(BST)를 위한 순회(Traversal)를 전위, 중위, 후회 모두 파이썬으로 구현하라
+
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def pre_order_traverse(node):
+    if node:
+        print(node.data, end=" ")
+        pre_order_traverse(node.left)
+        pre_order_traverse(node.right)
+
+def in_order_traverse(node):
+    if node:
+        in_order_traverse(node.left)
+        print(node.data, end=" ")
+        in_order_traverse(node.right)
+
+def post_order_traverse(node):
+    if node:
+        post_order_traverse(node.left)
+        post_order_traverse(node.right)
+        print(node.data, end=" ")
+
+# 이진검색트리 생성 및 노드 삽입
+root = TreeNode(55)
+root.left = TreeNode(15)
+root.right = TreeNode(60)
+root.left.left = TreeNode(8)
+root.left.right = TreeNode(28)
+root.right.left = TreeNode(90)
+root.left.left.left = TreeNode(3)
+root.left.right.left = TreeNode(18)
+root.left.right.right = TreeNode(45)
+
+print("전위 순회: ", end="")
+pre_order_traverse(root)
+print()
+
+print("중위 순회: ", end="")
+in_order_traverse(root)
+print()
+
+print("후위 순회: ", end="")
+post_order_traverse(root)
+print()
