@@ -54,3 +54,29 @@ def __deleteItem(self, tNode:TreeNode, x) -> TreeNode:
   else:
     tNode.right = self.__deleteItem(tNode.right, x)
     return tNode
+------------------------------------------------------------------------------------------------------------------
+
+
+def __deleteNode(self, tNode:TreeNode) -> TreeNode:
+
+  if tNode.left == None and tNode.right == None:
+    return None
+  elif tNode.left == None:
+    return tNode.right
+  elif tNode.right == None:
+    return tNode.left
+  else:
+    (rtnItem, rtnNode) = self.__deleteMinItem(tNode.right)
+
+    tNode.item = rtnItem
+    tNode.right = rtnNode
+    return tNode
+
+def __deleteMinItem(self, tNode:TreeNode) -> tuple:
+  if tNode.left == None:
+    return(tNode.item, tNode.right)
+  else:
+    (rtnItem, rtnNode) = self.__deleteMinItem(tNode.left)
+    tNode.left = rtnNode
+
+    return (rtnItem, tNode)
