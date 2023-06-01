@@ -36,3 +36,21 @@ def __insertItem(self, tNode:TreeNode, newItem) -> TreeNode:
   else:
     tNode.right = self.__insertItem(tNode.right, newItem)
     return tNode
+------------------------------------------------------------------------------------------------------------------
+삭제 구현 - 재귀적 버전
+
+
+def delete(self, x):
+  self.__root = self.__deleteItem(self.__root, x)
+
+def __deleteItem(self, tNode:TreeNode, x) -> TreeNode:
+  if (tNode == None):
+    return None
+  elif (x == tNode.item):
+    tNode = self.__deleteNode(tNode)
+
+  elif (x < tNode.item):
+    tNode.left = self.__deleteItem(tNode.left, x)
+  else:
+    tNode.right = self.__deleteItem(tNode.right, x)
+    return tNode
