@@ -81,10 +81,64 @@ def __deleteMinItem(self, tNode:TreeNode) -> tuple:
 
     return (rtnItem, tNode)
 ------------------------------------------------------------------------------------------------------------------
-
+기타
 
 def __isEmpty(self) -> bool:
   return self.__root == self.NIL
 
 def clear(self):
   self.__root = self.NIL
+------------------------------------------------------------------------------------------------------------------
+
+from binarySearchTree import*
+
+bst1 = BinarySearchTree()
+
+bst1.insert(10)
+bst1.insert(20)
+bst1.insert(5)
+bst1.insert(80)
+bst1.insert(90)
+bst1.insert(7550)
+bst1.insert(30)
+bst1.insert(77)
+bst1.insert(15)
+bst1.insert(40)
+bst1.insert(7550)
+bst1.insert(10)
+
+print('전위순회(pre-order traverse)')
+bst1.pre_order_traverse()
+print()
+
+print('중위순회(in-order traverse)')
+bst1.in_order_traverse()
+print()
+
+print('후위순회(post-order traverse)')
+bst1.post_order_traverse()
+print()
+
+------------------------------------------------------------------------------------------------------------------
+from binarySearchTree import*
+
+bst1 = BinarySearchTree()
+
+bst1.insert(55)
+bst1.insert(15)
+bst1.insert(60)
+bst1.insert(8)
+bst1.insert(28)
+bst1.insert(90)
+bst1.insert(3)
+bst1.insert(18)
+bst1.insert(45)
+bst1.insert(41)
+bst1.insert(48)
+bst1.insert(30)
+bst1.insert(50)
+bst1.insert(38)
+bst1.insert(33)
+bst1.insert(32)
+bst1.insert(36)
+bst1.insert(28)
