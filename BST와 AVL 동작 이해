@@ -1,0 +1,23 @@
+class TreeNode:
+  def __init__(self, newItem, left, right):
+    self.item = newItem
+    self.left = left
+    self.right = right
+
+class BinarySearchThree:
+  def __init__(self):
+    self.__root = None
+
+    def search(self, x) -> TreeNode:
+      return self.__searchItem(self.__root, x)
+
+      def __searchItem(self, tNode:TreeNode, x) -> TreeNode:
+        if(tNode == None):
+          return None
+        elif ( x == tNode.item):
+          return tNode
+        elif (x < tNode.item):
+          return self.__searchItem(tNode.left, x)
+        else:
+          return self.__searchItem(tNode.right, x)
+------------------------------------------------------------------------------------------------------------------
