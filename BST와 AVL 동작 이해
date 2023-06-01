@@ -21,3 +21,18 @@ class BinarySearchThree:
         else:
           return self.__searchItem(tNode.right, x)
 ------------------------------------------------------------------------------------------------------------------
+insert(x) 구현 - 파이썬 코드
+
+def insert(self, newItem):
+  self.__root = self.__insertItem(self.__root, newItem)
+
+def __insertItem(self, tNode:TreeNode, newItem) -> TreeNode:
+  if(tNode == None):
+    tNode == TreeNode(newItem, None, None)
+  elif (newItem == tNode.Item):
+    return None
+  elif (newItem < tNode.item):
+    tNode.left = self.__insertItem(tNode.left, newItem)
+  else:
+    tNode.right = self.__insertItem(tNode.right, newItem)
+    return tNode
