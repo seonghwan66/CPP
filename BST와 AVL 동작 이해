@@ -80,3 +80,11 @@ def __deleteMinItem(self, tNode:TreeNode) -> tuple:
     tNode.left = rtnNode
 
     return (rtnItem, tNode)
+------------------------------------------------------------------------------------------------------------------
+
+
+def __isEmpty(self) -> bool:
+  return self.__root == self.NIL
+
+def clear(self):
+  self.__root = self.NIL
