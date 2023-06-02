@@ -146,37 +146,47 @@ int main() {
 #include <iostream>
 using namespace std;
 
-template <class T> class MyStack {
-	T data[2];
+// 템플릿 클래스 MyStack 선언
+template <class T>
+class MyStack {
+    T data[2];  // 데이터를 저장할 배열
 public:
-	int tos = -1;
-	void push(T element) {
-		if (tos == 1) {
-			cout << "stack full이므로 더 넣지 못합니다." << endl;
-		}
-		else {
-			tos++;
-			data[tos] = element;
-		}
-	}
-	T pop() {
-		if (tos == -1) {
-			cout << "stack empty - 프로그램을 종료합니다." << endl;
-			exit(0);
-		}
-		return data[tos--];
-	}
+    int tos = -1;  // top of stack (tos) 변수 초기화
+
+    void push(T element) {
+        if (tos == 1) {
+            cout << "stack full이므로 더 넣지 못합니다." << endl;
+        } else {
+            tos++;
+            data[tos] = element;
+        }
+    }
+
+    T pop() {
+        if (tos == -1) {
+            cout << "stack empty - 프로그램을 종료합니다." << endl;
+            exit(0);
+        }
+        return data[tos--];
+    }
 };
+
 int main() {
-	MyStack<string> sc;
-	sc.push("bye");
-	sc.push("hello");
-	sc.push("world");
-	cout << "현재 string 스택에 " << sc.tos + 1 << " 개 있음" << endl;
-	cout << "맨 위에 있는 " << sc.pop() << " 꺼냄" << endl;
-	cout << "맨 위에 있는 " << sc.pop() << " 꺼냄" << endl;
-	sc.pop();
+    // MyStack 클래스의 인스턴스 생성 (타입: string)
+    MyStack<string> sc;
+
+    sc.push("bye");  // "bye"를 스택에 추가
+    sc.push("hello");  // "hello"를 스택에 추가
+    sc.push("world");  // "world"를 스택에 추가
+
+    cout << "현재 string 스택에 " << sc.tos + 1 << " 개 있음" << endl;
+    cout << "맨 위에 있는 " << sc.pop() << " 꺼냄" << endl;
+    cout << "맨 위에 있는 " << sc.pop() << " 꺼냄" << endl;
+    sc.pop();  // 스택에서 원소 제거
+
+    return 0;
 }
+
 
 
 
