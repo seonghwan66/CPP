@@ -146,6 +146,7 @@ print()
 
 bst1.delete(30)
 
+print()
 print("후위순회")
 bst1.post_order_traverse()    # 결과를 도식화 할 것
 print()
