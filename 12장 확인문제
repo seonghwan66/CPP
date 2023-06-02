@@ -58,18 +58,22 @@ int main() {
 using namespace std;
 
 int main() {
+    // 입력 파일 및 출력 파일 열기
     ifstream charlie("둘리.txt");
     ofstream puth("dooli.txt");
 
+    // 파일 열기 실패 시 오류 메시지 출력 후 종료
     if (!charlie || !puth) {
         cerr << "파일 열기 실패" << endl;
         return 1;
     }
 
+    // 입력 파일에서 전체 문자열 읽기
     string s;
     getline(charlie, s, '&');
-    string f, r;
 
+    // 사용자로부터 고치기 전 단어와 고치기 후 단어 입력 받기
+    string f, r;
     cout << "고치기 전 단어: ";
     getline(cin, f);
 
@@ -78,6 +82,7 @@ int main() {
 
     int sindex = 0;
 
+    // 문자열에서 고치기 전 단어를 찾아 고치기 후 단어로 대체
     while (true) {
         int findex = s.find(f, sindex);
         if (findex == -1) break;
@@ -86,12 +91,16 @@ int main() {
         sindex = findex + r.length();
     }
 
+    // 결과를 출력 파일에 저장
     puth << s << endl;
 
+    // 파일 닫기
     charlie.close();
     puth.close();
 
+    // 처리 완료 메시지 출력
     cout << "처리 완료. dooli.txt를 열어서 결과를 확인하세요." << endl;
 
     return 0;
 }
+
