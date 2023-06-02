@@ -7,43 +7,47 @@
 using namespace std;
 
 int main() {
+    // 입력 파일 및 출력 파일 열기
+    ifstream fin("score.txt");
+    ofstream fout("result.txt");
 
-	ifstream fin("score.txt");
-	ofstream fout("result.txt");
+    // 파일 열기 실패 시 오류 메시지 출력 후 종료
+    if (!fin || !fout) {
+        cerr << "파일 열기 실패" << endl;
+        return 1;
+    }
 
-	if (!fin || !fout) {
-		cerr << "파일 열기 실패" << endl;
-		return 1;
-	}
+    string name;
+    double score;
+    double sum = 0;
+    double max_score = 0;
+    int count = 0;
 
-	string name;
+    // 파일에서 이름과 점수를 읽어 합계, 최고 점수, 학생 수 계산
+    while (fin >> name >> score) {
+        sum += score;
+        max_score = max(max_score, score);
+        count++;
+    }
 
-	double score;
-	double sum = 0;
-	double max_score = 0;
+    // 평균 계산
+    double avg = sum / count;
 
-	int count = 0;
+    // 결과를 result.txt에 출력
+    fout << fixed << setprecision(2) << "합계 : " << sum << endl;
+    fout << fixed << setprecision(2) << "평균 : " << avg << endl;
+    fout << fixed << setprecision(2) << "최고 점수 : " << max_score << endl;
 
-	while (fin >> name >> score) {
-		sum += score;
-		max_score = max(max_score, score);
-		count++;
-	}
+    // 파일 닫기
+    fin.close();
+    fout.close();
 
-	double avg = sum / count;
+    // 처리 완료 메시지 출력
+    cout << "처리 완료. result.txt를 열어서 결과를 확인하세요." << endl;
 
-	fout << fixed << setprecision(2) << "합계 : " << sum << endl;
-	fout << fixed << setprecision(2) << "평균 : " << avg << endl;
-	fout << fixed << setprecision(2) << "최고 점수 : " << max_score << endl;
-
-	fin.close();
-	fout.close();
-
-	cout << "처리완료. result.txt를 열어서 결과를 확인하세요." << endl;
-
-	return 0;
-
+    return 0;
 }
+
 
 
 --------9번-------
