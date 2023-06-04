@@ -64,3 +64,43 @@ int main() {
 	cout << "이용해주셔서 감사합니다!" << endl;
 
 }// main
+
+--------------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std;
+
+int main() {
+    map<string, string> dic; // string을 키로, string을 값으로 갖는 맵 dic 선언
+
+    // 맵에 단어 쌍 추가
+    dic.insert(make_pair("키위", "kiwil"));
+    dic.insert(make_pair("사과", "apple"));
+    dic["체리"] = "cherry";
+    dic["당근"] = "carrot";
+    dic["기린"] = "giraffe";
+    dic["얼룩말"] = "zebra";
+    
+    cout << "---------------------------" << endl;
+    cout << "총 동물 수 :  " << dic.size() << endl; // 저장된 단어 개수 출력
+    cout << "---------------------------" << endl;
+
+    string eword;
+    while (true) {
+        cout << "찾고 싶은 동물 : ";
+        getline(cin, eword); // 사용자로부터 영단어 입력 받기
+
+        if (eword == "exit")
+            break; // 입력이 "exit"인 경우 반복 종료
+
+        if (dic.find(eword) == dic.end())
+            cout << "미등록 동물입니다." << endl; // 맵에서 해당 단어를 찾지 못한 경우 "미등록 동물입니다." 출력
+        else
+            cout << dic[eword] << endl; // 맵에서 해당 단어의 번역을 출력
+    }
+
+    cout << "이용해주셔서 감사합니다!" << endl;
+
+    return 0;
+}
