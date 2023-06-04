@@ -287,7 +287,7 @@ int main() {
 	}
 }
 
-----------------------------특정 수 나올 때까지 난수 생------------------------------------
+----------------------------특정 수 나올 때까지 난수 생성------------------------------------
 #include <iostream>
 #include <vector>
 #include <random>
@@ -318,4 +318,26 @@ int main() {
 		fout<< "(" << v[i] <<"," << v[i+1] << ")" << endl;
 
 	fout.close();
+}
+----------------------------interator 사용 예제------------------------------------
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+	vector<int> v = {10, 20, 30, 40, 50};  // 배열처럼초기화가능
+	
+	vector<int>::iterator it;
+	
+	for (it = v.begin(); it != v.end(); it++) {
+		*it += 1;
+		cout<< *it << ' ';
+	}
+	cout<< endl;
+	
+	it = v.begin();
+	v.insert(it, 100);
+	
+	for (it = v.begin(); it != v.end(); it++)
+		cout<< *it << ' '; cout<< endl;
 }
