@@ -295,30 +295,40 @@ int main() {
 using namespace std;
 
 int main() {
-	vector<int> v;
+    vector<int> v; // 정수 쌍을 저장할 벡터 선언
 
-	random_device dv;
-	mt19937 gen(dv());
-	uniform_int_distribution<int> dist(1, 10);
-	
-	int a,b;
+    random_device dv; // 시드값 생성
+    mt19937 gen(dv()); // 난수 생성기 초기화
+    uniform_int_distribution<int> dist(1, 10); // 1부터 10 사이의 정수를 생성할 분포 생성
 
-	do {
-		a = dist(gen); b = dist(gen);
-		v.push_back(a); v.push_back(b);
-	}
-	
-	while (a != b);
+    int a, b;
 
-	ofstream fout("random.txt");	/* if(!fout)생략*/
-	
-	fout << v.size() / 2 << "개의 정수 쌍이 생성되었습니다." << endl;
-	
-	for (int i= 0; i< v.size(); i+=2)
-		fout<< "(" << v[i] <<"," << v[i+1] << ")" << endl;
+    // a와 b가 서로 다른 값을 가질 때까지 반복
+    do {
+        a = dist(gen);
+        b = dist(gen);
+        v.push_back(a); // a를 벡터에 추가
+        v.push_back(b); // b를 벡터에 추가
+    } while (a != b);
 
-	fout.close();
+    ofstream fout("random.txt"); // 파일 출력 스트림 생성
+
+    if (!fout) { // 파일 열기 실패 시 오류 메시지 출력 후 종료
+        cerr << "파일 열기 실패" << endl;
+        return 1;
+    }
+
+    fout << v.size() / 2 << "개의 정수 쌍이 생성되었습니다." << endl; // 생성된 쌍의 개수 출력
+
+    // 벡터의 요소를 순회하면서 정수 쌍을 파일에 출력
+    for (int i = 0; i < v.size(); i += 2)
+        fout << "(" << v[i] << "," << v[i + 1] << ")" << endl;
+
+    fout.close(); // 파일 닫기
+
+    return 0;
 }
+
 ----------------------------interator 사용 예제------------------------------------
 #include <iostream>
 #include <vector>
