@@ -72,61 +72,63 @@ int main() {
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "hw.h"
+#include "hw.h" // 외부 헤더 파일 hw.h를 포함합니다.
+
 using namespace std;
 
 int main() {
-    ifstream fin("동물사전.txt");
+    ifstream fin("동물사전.txt"); // 동물사전.txt 파일을 읽기 위해 ifstream 객체 fin을 생성합니다.
 
-    if (!fin) {
+    if (!fin) { // 파일 열기에 실패한 경우
         cerr << "사전 열기 실패";
-        return 0;
+        return 0; // 프로그램 종료
     }
 
-    string m[100][2];
-    int size = 0;
+    string m[100][2]; // 최대 100개의 동물과 설명을 저장하기 위한 2차원 문자열 배열 m을 선언합니다.
+    int size = 0; // 동물의 개수를 저장하는 변수입니다. 초기값은 0입니다.
 
     while (true) {
-        fin >> m[size][0] >> m[size][1];
-        if (fin.eof())
-            break;
-        size++;
+        fin >> m[size][0] >> m[size][1]; // 파일에서 동물 이름과 설명을 읽어 배열 m에 저장합니다.
+        if (fin.eof()) // 파일의 끝에 도달한 경우
+            break; // 반복문 종료
+        size++; // 동물 개수를 1 증가시킵니다.
     }
 
-    fin.close();
-    print_2dim_array(m, size);
+    fin.close(); // 파일을 닫습니다.
+    print_2dim_array(m, size); // 외부 헤더 파일에 정의된 print_2dim_array 함수를 사용하여 배열 m을 출력합니다.
 
     cout << "--------------------------------------" << endl;
-    cout << "총 동물 수 = " << size << endl;
+    cout << "총 동물 수 = " << size << endl; // 동물의 개수를 출력합니다.
     cout << "--------------------------------------" << endl;
 
-    string a;
+    string a; // 사용자로부터 입력 받을 동물 이름을 저장하는 문자열 변수 a를 선언합니다.
 
     while (true) {
         cout << "찾고 싶은 동물: ";
-        getline(cin, a);
+        getline(cin, a); // 사용자로부터 동물 이름을 입력받습니다. 공백을 포함한 문자열을 입력받기 위해 getline 함수를 사용합니다.
 
-        if (a == "exit")
-            break;
+        if (a == "exit") // 사용자가 "exit"를 입력한 경우
+            break; // 반복문 종료
 
-        bool found = false;
+        bool found = false; // 동물을 찾았는지 여부를 저장하는 변수입니다. 초기값은 false입니다.
 
-        for (int i = 0; i < size; i++) {
-            if (m[i][0] == a) {
-                cout << "--> " << m[i][1] << endl;
-                found = true;
-                break;
+        for (int i = 0; i < size; i++) { // 배열 m을 순회하며 동물을 검색합니다.
+            if (m[i][0] == a) { // 동물 이름을 찾은 경우
+                cout << "--> " << m[i][1] << endl; // 해당 동물의 설명을 출력합니다.
+                found = true; // 동물을 찾았음을 표시합니다.
+                break; // 반복문 종료
             }
         }
 
-        if (!found) {
-            cout << "미등록 동물입니다." << endl;
+        if (!found) { // 동물을 찾지 못한 경우
+            cout << "미등록 동물입니다." << endl; // 해당 동물이 등록되지 않았음을 알립니다.
         }
     }
 
     cout << "이용해주셔서 감사합니다!" << endl;
     return 0;
 }
+
 
 --------------------------------------------------------------------------------
 #include <iostream>
