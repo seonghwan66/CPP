@@ -141,3 +141,34 @@ int main() {
 
     return 0;
 }
+
+---------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+class A {
+public:
+    int add(int a, int b) { return a + b; }
+};
+
+class B1 : virtual public A {
+public:
+    int minus(int a, int b) { return a - b; }
+};
+
+class B2 : virtual public A {
+public:
+    int multi(int a, int b) { return a * b; }
+};
+
+class C : public B1, public B2 {
+};
+
+int main() {
+    C c;
+    cout << c.add(3, 5) << endl; // B1, B2 중에 누가 상속받은 add()를 의미하는지 모호하지 않음
+
+    return 0;
+}
