@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 10; // 정수형 변수 선언 및 초기화
+    int* ptr; // 정수형 포인터 선언
+
+    ptr = &num; // 포인터에 변수의 메모리 주소를 할당
+
+    cout << "num의 값: " << num << endl;
+    cout << "num의 메모리 주소: " << &num << endl;
+    cout << "ptr이 가리키는 값: " << *ptr << endl;
+    cout << "ptr의 값(메모리 주소): " << ptr << endl;
+
+    *ptr = 20; // 포인터를 통해 변수의 값을 수정
+
+    cout << "변경된 num의 값: " << num << endl;
+
+    return 0;
+}
