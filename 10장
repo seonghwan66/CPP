@@ -556,11 +556,11 @@ int main() {
             m.insert({ country, capital }); // 따라서 key의 중복을 고려하지 않아도 된다. -> insert
         }
 
-        else if (m.count(world) == 1) { // 입력 받은 나라의 이름이 m의 key값으로 존재한다는 뜻
+        else if (m.count(country) == 1) { // 입력 받은 나라의 이름이 m의 key값으로 존재한다는 뜻
             cout << "이미 등록된 나라입니다. 수정할까요? (y/n) : "; // char choice로 받을 예정
             cin >> choice;
             if (choice == 'y') { // y일 경우 입력한대로 나라와 수도 수정
-                m[world] = capital; // 입력 받은 나라와 수도를 m의 key, value 값으로 설정
+                m[country] = capital; // 입력 받은 나라와 수도를 m의 key, value 값으로 설정
             }
         }
     }
