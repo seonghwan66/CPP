@@ -490,6 +490,30 @@ dic.find(eword)를 사용하여 맵에서 해당하는 영단어를 검색합니
 찾은 영단어가 맵에 있는 경우, 해당하는 한글 단어를 출력합니다.
 "종료합니다..."를 출력하고 프로그램을 종료합니다.
 
+-------------------------------------------------------------auto를 이용한 변수 선언 예제-------------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int square(int x) { return x * x; }
+int main() {
+	auto c = 'a';
+	auto pi = 3.14;
+	auto ten = 10;
+	auto* p = &ten;
+
+	cout << c << " " << pi << " " << ten << " " << p << " " << *p << endl;
+
+	auto ret = square(3);
+	cout << ret << endl;
+
+	vector<int> v = { 10,20,30,40,50 };
+	vector<int>::iterator it;
+	for (it = v.begin(); it != v.end(); it++) cout << *it << " ";
+	cout << endl;
+}
+
 -------------------------------------------------------------10장 29번-------------------------------------------------------------
 
 #include <iostream> //입출력에 대한 헤더파일
