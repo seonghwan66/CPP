@@ -102,46 +102,6 @@ int main() {
 	cout << "세 수의 합은 " << sum<int>(5, 7, 8) << endl;
 	cout << "세 실수의 합은 " << sum<double>(3.14, 7.99, -1.0) << endl;
 }
-
-
-
---------------------------------22번---------------------------------
-#include<iostream>
-using namespace std;
-template <class T>
-class MyStack {
-	T data[5];
-public:
-	int tos = -1;
-	void push(T element) {
-		if (tos == 4) {
-			cout << "stack full이므로 더 넣을 수 없습니다." << endl;
-		}
-		else {
-			tos++;
-			data[tos] = element;
-		}
-	}
-	T pop() {
-		if (tos == -1) {
-			cout << "stack empty - 프로그램을 종료합니다." << endl;
-			exit(0);
-		}
-		return data[tos--];
-	}
-};
-int main() {
-	MyStack<int> si;
-	si.push(100);
-	si.push(200);
-	si.push(300);
-	cout << "현재 정수 스택에 " << si.tos + 1 << " 개 있음" << endl;
-	cout << "맨 위에 있는 " << si.pop() << " 꺼냄" << endl;
-	cout << "맨 위에 있는 " << si.pop() << " 꺼냄" << endl;
-	cout << "현재 정수 스택에 " << si.tos + 1 << " 개 남아있음" << endl << endl;
-}
-
-
 --------------------------------21번---------------------------------
 #include <iostream>
 using namespace std;
@@ -207,6 +167,44 @@ push 함수를 사용하여 "bye", "hello", "world"를 스택에 추가합니다
 pop 함수를 사용하여 스택의 맨 위에 있는 원소를 꺼내고 출력합니다.
 다시 pop 함수를 사용하여 스택의 맨 위에 있는 원소를 꺼내고 출력합니다.
 마지막으로 pop 함수를 사용하여 스택에서 원소를 제거합니다.
+
+--------------------------------22번---------------------------------
+#include<iostream>
+using namespace std;
+template <class T>
+class MyStack {
+	T data[5];
+public:
+	int tos = -1;
+	void push(T element) {
+		if (tos == 4) {
+			cout << "stack full이므로 더 넣을 수 없습니다." << endl;
+		}
+		else {
+			tos++;
+			data[tos] = element;
+		}
+	}
+	T pop() {
+		if (tos == -1) {
+			cout << "stack empty - 프로그램을 종료합니다." << endl;
+			exit(0);
+		}
+		return data[tos--];
+	}
+};
+int main() {
+	MyStack<int> si;
+	si.push(100);
+	si.push(200);
+	si.push(300);
+	cout << "현재 정수 스택에 " << si.tos + 1 << " 개 있음" << endl;
+	cout << "맨 위에 있는 " << si.pop() << " 꺼냄" << endl;
+	cout << "맨 위에 있는 " << si.pop() << " 꺼냄" << endl;
+	cout << "현재 정수 스택에 " << si.tos + 1 << " 개 남아있음" << endl << endl;
+}
+
+
 
 
 ----------------23번------------------------
