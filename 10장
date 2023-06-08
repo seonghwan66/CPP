@@ -209,6 +209,26 @@ pop 함수를 사용하여 스택의 맨 위에 있는 원소를 꺼내고 출�
 마지막으로 pop 함수를 사용하여 스택에서 원소를 제거합니다.
 
 
+----------------23번------------------------
+#include <iostream>
+using namespace std;
+
+class Circle {
+int radius;
+public:
+	Circle(int r=1) {	radius = r;		}
+	double operator ()()     {
+		return 3.141592 * radius * radius;
+	} double operator ()(int r)     {
+		radius = r;return 3.141592 * radius * radius;
+	}
+};
+int main() {
+	Circle donut, pizza(10);
+	
+	cout<< donut() << " " << pizza() << endl;
+	cout<< donut(10) << " " << pizza(100) << endl;
+}
 
 ----------------문자열을 저장하는 벡터 만들기(이름 순 나열)------------------------
 #include<iostream>
