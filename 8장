@@ -142,7 +142,54 @@ int main() {
     return 0;
 }
 
----------------------------------------------------------------------------
+-------------------------------------------------다중 상속-------------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+class Adder {
+protected:
+    int add(int a, int b) { return a + b; }
+};
+
+class Subtractor {
+protected:
+    int minus(int a, int b) { return a - b; }
+};
+
+// Adder 클래스와 Subtractor 클래스는 protected 접근 지정자를 사용하여 멤버 함수를 정의. 이는 이 클래스들의 파생 클래스에서 접근 가능
+
+class Calculator : public Adder, public Subtractor { // Calculator 클래스는 Adder 클래스와 Subtractor 클래스를 상속. 상속받은 클래스는 기반 클래스의 멤버 함수에 접근 가능
+public:
+    int calc(int a, char op, int b) { // 정수 a, 문자 op, 정수 b를 받아 연산을 수행하고 그 결과를 반환.
+        int res = 0;
+        if (op == '+')
+            res = add(a, b);
+        else if (op == '-')
+            res = minus(a, b);
+        return res;
+    }
+};
+
+int main() { // Calculator 객체를 생성하고, 사용자로부터 수식을 입력받아 계산을 수행
+    int a, b;
+    char op;
+    Calculator calculator;
+
+    while (true) {
+        cout << "수식을 입력하세요. (정수+정수 혹은 정수-정수)" << endl;
+        cin >> a >> op >> b;
+
+        if (a == 99 && b == 99)
+            break; //  "99 99"를 입력하면 반복문을 종료하고 프로그램을 종료함.
+
+        cout << "답은 " << calculator.calc(a, op, b) << " 입니다." << endl;
+    }
+
+    cout << "계산을 종료합니다." << endl;
+}
+
+-------------------------------------------------------------------------------------------------------------------
 
 #include <iostream>
 
