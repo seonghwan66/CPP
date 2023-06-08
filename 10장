@@ -228,6 +228,33 @@ int main() {
 	cout<< donut(10) << " " << pizza(100) << endl;
 }
 
+----------------28번------------------------
+
+#include<iostream>
+#include<map>
+using namespace std;
+
+int main() {
+	map<string, string> m;
+
+	m.insert(make_pair("고양이", "cat"));
+	m.insert(make_pair("고양이", "nyang"));
+	m.insert({ "판다","panda" });
+	m.insert({ "판다","Po" });
+	m["사자"] = "lion";
+	m["사자"] = "saja";
+
+	cout << "저장된 동물 수 = " << m.size() << endl;
+
+	for (
+		auto it = m.begin();
+		it != m.end();
+		it++
+		)
+		cout << it->first << " " << it->second << endl;
+
+	return 0;
+}
 ----------------문자열을 저장하는 벡터 만들기(이름 순 나열)------------------------
 #include<iostream>
 #include<vector>
