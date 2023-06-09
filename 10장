@@ -223,14 +223,18 @@ using namespace std;
 class Circle {
 int radius;
 public:
-	Circle(int r=1) {	radius = r;		}
-	double operator ()()     {
+	Circle(int r=1) {	
+	radius = r;
+	}
+	double operator() {
 		return 3.141592 * radius * radius;
-	} double operator ()(int r)     {
+	}
+	double operator ()(int r) {
 		radius = r;return 3.141592 * radius * radius;
 	}
 };
 int main() {
+
 	Circle donut, pizza(10);
 	
 	cout<< donut() << " " << pizza() << endl;
