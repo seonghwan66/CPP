@@ -124,7 +124,7 @@ public:
     int tos = -1;  // top of stack (tos) 변수 초기화
 
     void push(T element) {
-        if (tos == 1) { // 스택이 가득 찼음을 의미
+        if (tos == 1) { // 스택이 가득 찼음을 의미, 스택에 더이상 원소 추가 불가
             cout << "stack full이므로 더 넣지 못합니다." << endl;
         } else {
             tos++;
@@ -133,7 +133,7 @@ public:
     }
 
     T pop() {
-        if (tos == -1) { // 스택이 비었음을 의미
+        if (tos == -1) { // 스택이 비었음을 의미, 스택에서 원소를 더이상 꺼낼 수 없음.
             cout << "stack empty - 프로그램을 종료합니다." << endl;
             exit(0);
         }
