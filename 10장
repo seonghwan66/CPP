@@ -101,12 +101,12 @@ using namespace std;
 
 template<typename T>
 
-T sum(T a, T b, T c = 0) {
+T sum(T a, T b, T c = 0) { // c를 0으로 초기화, 입력 받지 않을 경우 c = 0으로 계산.
 	return a + b + c;
 }
 
 int main() {
-	cout << "두 수의 합은 " << sum<int>(5, 7) << endl;
+	cout << "두 수의 합은 " << sum<int>(5, 7) << endl; // a = 5, b = 7, c = 0으로 계산
 	cout << "세 수의 합은 " << sum<int>(5, 7, 8) << endl;
 	cout << "세 실수의 합은 " << sum<double>(3.14, 7.99, -1.0) << endl;
 }
