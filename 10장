@@ -534,7 +534,7 @@ int main() {
 	cout << endl;
 }
 
--------------------------------------------------------------10장 29번-------------------------------------------------------------
+-------------------------------------------------------------10장 29번(주석 포함 o)-------------------------------------------------------------
 
 #include <iostream> // 입출력에 대한 헤더파일
 #include<string> // string에 대한 헤더파일 (getline(), strcmp() ,,,등등)
@@ -581,6 +581,49 @@ int main() {
             cin >> choice;
             if (choice == 'y') { // y일 경우 입력한대로 나라와 수도 수정
                 m[country] = capital; // 입력 받은 나라와 수도를 m의 key, value 값으로 설정
+            }
+        }
+    }
+}
+-------------------------------------------------------------10장 29번(주석 포함 x)-------------------------------------------------------------
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <map>
+
+using namespace std;
+
+int main() {
+    map<string, string> m;
+
+    ofstream fout("capital.txt");
+    string country, capital;
+    char choice;
+
+    while (true) {
+        cout << "나라 수도: ";
+        cin >> country;
+
+        if (country == "exit") {
+            for (auto it = m.begin(); it != m.end(); it++) {
+                fout << it->first << " " << it->second << endl;
+            }
+
+            fout.close();
+            cout << m.size() << " 나라의 수도 정보를 capital.txt에 저장하였습니다. 감사합니다.";
+            break;
+        }
+
+        cin >> capital;
+
+        if (m.count(country) == 0) {
+            m.insert({ country, capital });
+        }
+        else if (m.count(country) == 1) {
+            cout << "이미 등록된 나라입니다. 수정할까요? (y/n): ";
+            cin >> choice;
+            if (choice == 'y') {
+                m[country] = capital;
             }
         }
     }
