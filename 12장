@@ -61,38 +61,6 @@ int main() {
 using namespace std;
 
 int main() {
-
-    char source[] = "source.txt";
-    ifstream fin(source);
-    ofstream fout("copy.txt");
-
-    if (!fin || !fout) {
-        cout << " 열기 오류" << endl;
-        return 0;
-    }
-
-    int count = 0;
-    int c;
-    while ((c = fin.get()) != EOF) {
-        cout << (char)c;
-        fout.put(c);
-        count++;
-    }
-
-    cout << "---------------------------" << endl;
-    cout << "읽은 바이트 수는 " << count << endl;
-
-    fin.close();
-    fout.close();
-
-    return 0;
-}
---------------------------------------------------------4번--------------------------------------------------------
-#include <iostream>
-#include <fstream>
-using namespace std;
-
-int main() {
     char source[] = "source.txt"; // 복사할 파일의 이름
     ifstream fin(source); // 입력 파일 스트림 객체 생성
     ofstream fout("copy.txt"); // 출력 파일 스트림 객체 생성
@@ -117,6 +85,32 @@ int main() {
     fout.close(); // 출력 파일 스트림 닫기
     
     return 0; // 프로그램 종료
+}
+--------------------------------------------------------4번--------------------------------------------------------
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+	ifstream fin("source.txt");
+	ofstream fout("copy.txt");
+
+	if (!fin || !fout) {
+		cerr << "열기 실패" << endl;
+		return 0;
+	}
+	string s;
+	int n = 0;
+
+	while (getline(fin, s)) {
+		cout << n++ << " ==> " << s << endl; /* 라인 출력 */
+		fout << s << endl;
+	}
+	cout << "------------------" << endl;
+	cout << "총 " << n << " 라인" << endl;
+
+	fin.close(); fout.close();
 }
 --------------------------------------------------------6번--------------------------------------------------------
 #include<iostream>
