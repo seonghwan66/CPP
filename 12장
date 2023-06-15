@@ -198,7 +198,34 @@ int main() {
 - while 루프를 통해 파일에서 이름과 점수를 읽어들여 합계를 계산하고, 최고 점수를 갱신하며, 학생 수를 세어줍니다.
 - 평균을 계산합니다.
 - fout을 사용하여 result.txt 파일에 결과를 출력합니다. 출력할 때 소수점 둘째 자리까지 고정된 형식으로 출력하기 위해 fixed와 setprecision(2)를 사용합니다.
+--------------------------------------------------------9번--------------------------------------------------------
+#include <iostream>
+#include <algorithm>
+#include <fstream>
+#define N 31
+using namespace std;
 
+int main() {
+	ifstream fin("sort.txt");
+	if (!fin) {
+		cerr << "sort.txt 열기 실패" << endl;
+		return 1;
+	}
+	ofstream fout("reslut.txt");
+	if (!fout) {
+		cerr << "result.txt 열기 실패" << endl;
+		return 1;
+	}
+	double arr[N];
+	for (int i = 0; i < N; i++) {
+		fin >> arr[i];
+	}
+	sort(arr, arr + N, greater<double>());
+	for (int i = 0; i < N; i++) {
+		fout << arr[i] << endl;
+	}
+	fin.close(); fout.close();
+}
 --------------------------------------------------------9번--------------------------------------------------------
 #include <iostream>
 #include <fstream>
