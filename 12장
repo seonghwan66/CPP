@@ -90,28 +90,33 @@ int main() {
 --------------------------------------------------------4번--------------------------------------------------------
 #include <iostream>
 #include <fstream>
-#include <string>
 using namespace std;
 
 int main() {
-	ifstream fin("source.txt");
-	ofstream fout("copy.txt");
-
-	if (!fin || !fout) {
-		cerr << "열기 실패" << endl;
-		return 0;
-	}
-	string s;
-	int n = 0;
-
-	while (getline(fin, s)) {
-		cout << n++ << " ==> " << s << endl; /* 라인 출력 */
-		fout << s << endl;
-	}
-	cout << "------------------" << endl;
-	cout << "총 " << n << " 라인" << endl;
-
-	fin.close(); fout.close();
+    char source[] = "source.txt"; // 복사할 파일의 이름
+    ifstream fin(source); // 입력 파일 스트림 객체 생성
+    ofstream fout("copy.txt"); // 출력 파일 스트림 객체 생성
+    
+    if (!fin || !fout) { // 입력 파일 또는 출력 파일 열기 오류 체크
+        cout << source << " 열기 오류" << endl; // 오류 메시지 출력
+        return 0; // 프로그램 종료
+    }
+    
+    int count = 0; // 읽은 바이트 수를 저장하는 변수
+    int c; // 파일로부터 읽은 문자를 저장할 변수
+    while ((c = fin.get()) != EOF) { // 파일로부터 문자를 읽어들이는 반복문
+        cout << (char)c; // 읽은 문자를 콘솔에 출력
+        fout.put(c); // 읽은 문자를 출력 파일에 쓰기
+        count++; // 읽은 바이트 수 증가
+    }
+    
+    cout << "---------------------------" << endl;
+    cout << "읽은 바이트 수는 " << count << endl; // 읽은 바이트 수 출력
+    
+    fin.close(); // 입력 파일 스트림 닫기
+    fout.close(); // 출력 파일 스트림 닫기
+    
+    return 0; // 프로그램 종료
 }
 --------------------------------------------------------6번--------------------------------------------------------
 #include<iostream>
