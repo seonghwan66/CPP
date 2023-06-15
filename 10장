@@ -247,9 +247,9 @@ int main() {
 using namespace std;
 
 int main() {
-    
-    random_device rd;
-    mt19937 eng(rd());
+    // random_device의 객체 rd를 초기값(seed)으로 사용하여 mt19937 객체인 eng를 초기화시킴으로써 각 실행마다 다른 난수가 생성됨.
+    random_device rd; // random_device를 생성하고
+    mt19937 eng(rd()); // mt19937 생성자에 rd()를 호출하여 시드로 사용함.
     
     for (int i= 0; i< 10; i++) 
     cout<<  rd() << endl; 
