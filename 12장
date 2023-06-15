@@ -62,16 +62,16 @@ using namespace std;
 
 int main() {
     char source[] = "source.txt"; // 복사할 파일의 이름
-    ifstream fin(source); // 입력 파일 스트림 객체 생성
-    ofstream fout("copy.txt"); // 출력 파일 스트림 객체 생성
+    ifstream fin(source);
+    ofstream fout("copy.txt");
     
-    if (!fin || !fout) { // 입력 파일 또는 출력 파일 열기 오류 체크
-        cout << source << " 열기 오류" << endl; // 오류 메시지 출력
-        return 0; // 프로그램 종료
+    if (!fin || !fout) {
+        cout << source << " 열기 오류" << endl;
+        return 0;
     }
-    
     int count = 0; // 읽은 바이트 수를 저장하는 변수
     int c; // 파일로부터 읽은 문자를 저장할 변수
+    
     while ((c = fin.get()) != EOF) { // 파일로부터 문자를 읽어들이는 반복문
         cout << (char)c; // 읽은 문자를 콘솔에 출력
         fout.put(c); // 읽은 문자를 출력 파일에 쓰기
@@ -81,10 +81,10 @@ int main() {
     cout << "---------------------------" << endl;
     cout << "읽은 바이트 수는 " << count << endl; // 읽은 바이트 수 출력
     
-    fin.close(); // 입력 파일 스트림 닫기
-    fout.close(); // 출력 파일 스트림 닫기
+    fin.close();
+    fout.close();
     
-    return 0; // 프로그램 종료
+    return 0;
 }
 --------------------------------------------------------4번--------------------------------------------------------
 #include <iostream>
@@ -93,25 +93,28 @@ int main() {
 using namespace std;
 
 int main() {
-	ifstream fin("source.txt");
-	ofstream fout("copy.txt");
+    ifstream fin("source.txt");
+    ofstream fout("copy.txt");
 
-	if (!fin || !fout) {
-		cerr << "열기 실패" << endl;
-		return 0;
-	}
-	string s;
-	int n = 0;
+    if (!fin || !fout) {
+        cerr << "열기 실패" << endl;
+        return 0;
+    }    
+    string s; // 입력 받은 라인을 저장할 문자열 변수
+    int n = 0; // 라인 수를 저장하는 변수
 
-	while (getline(fin, s)) {
-		cout << n++ << " ==> " << s << endl; /* 라인 출력 */
-		fout << s << endl;
-	}
-	cout << "------------------" << endl;
-	cout << "총 " << n << " 라인" << endl;
+    while (getline(fin, s)) { // 파일에서 한 라인씩 읽어오는 반복문
+        cout << n++ << " ==> " << s << endl; // 읽은 라인 번호와 내용을 콘솔에 출력
+        fout << s << endl; // 읽은 라인을 출력 파일에 쓰기
+    }
+    cout << "------------------" << endl;
+    cout << "총 " << n << " 라인" << endl; // 총 라인 수 출력
+    fin.close();
+    fout.close();
 
-	fin.close(); fout.close();
+    return 0; // 프로그램 종료
 }
+
 --------------------------------------------------------6번--------------------------------------------------------
 #include<iostream>
 #include<fstream>
