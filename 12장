@@ -198,6 +198,35 @@ int main() {
 - while 루프를 통해 파일에서 이름과 점수를 읽어들여 합계를 계산하고, 최고 점수를 갱신하며, 학생 수를 세어줍니다.
 - 평균을 계산합니다.
 - fout을 사용하여 result.txt 파일에 결과를 출력합니다. 출력할 때 소수점 둘째 자리까지 고정된 형식으로 출력하기 위해 fixed와 setprecision(2)를 사용합니다.
+
+--------------------------------------------------------7번--------------------------------------------------------
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream fout("memo.txt", ios::app);
+    if (!fout) {
+        cout<< "열기실패"<<endl;
+        return 1;
+    }
+    string s;
+
+    cout<<"메모입력을 시작합니다.(exit 종료)" << endl;
+    
+    while (true) {
+        cout << "==> ";
+        getline(cin, s);
+        
+        if (s == "exit"){
+            cout <<"메모가추가되었습니다. memo.txt를확인하세요\n";
+            fout << "------------------------------\n\n"; break;
+            }
+        fout << s << endl;
+    }
+        
+    fout.close();
+}
 --------------------------------------------------------9번--------------------------------------------------------
 #include <iostream>
 #include <algorithm>
